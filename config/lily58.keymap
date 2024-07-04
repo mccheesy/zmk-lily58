@@ -43,11 +43,11 @@
 
             display-name = "nav";
             bindings = <
-&none  &none         &none         &none             &none           &none                      &none          &none          &none         &none      &none         &none
-&none  &none         &none         &none             &none           &none                      &kp K_REDO     &kp K_PASTE    &kp K_COPY    &kp K_CUT  &kp K_UNDO    &none
-&none  &kp LEFT_GUI  &kp LEFT_ALT  &kp LEFT_CONTROL  &kp LEFT_SHIFT  &none                      &kp LEFT       &kp DOWN       &kp UP_ARROW  &kp RIGHT  &kp CAPSLOCK  &none
-&none  &none         &none         &none             &none           &none  &none    &none      &kp HOME       &kp PAGE_DOWN  &kp PAGE_UP   &kp END    &kp INSERT    &none
-                                   &none             &none           &none  &none    &kp ENTER  &kp BACKSPACE  &kp DELETE     &none
+&bootloader  &sys_reset    &none         &none             &none           &none                      &none          &none          &none         &none      &none         &none
+&none        &none         &none         &none             &none           &none                      &kp K_REDO     &kp K_PASTE    &kp K_COPY    &kp K_CUT  &kp K_UNDO    &none
+&none        &kp LEFT_GUI  &kp LEFT_ALT  &kp LEFT_CONTROL  &kp LEFT_SHIFT  &none                      &kp LEFT       &kp DOWN       &kp UP_ARROW  &kp RIGHT  &kp CAPSLOCK  &none
+&none        &none         &none         &none             &none           &none  &none    &none      &kp HOME       &kp PAGE_DOWN  &kp PAGE_UP   &kp END    &kp INSERT    &none
+                                         &none             &none           &none  &none    &kp ENTER  &kp BACKSPACE  &kp DELETE     &none
             >;
         };
 
@@ -83,7 +83,7 @@
 
         num {
             bindings = <
-&none  &none             &none         &none         &none         &none                                  &none  &none            &none              &none          &none          &none
+&none  &none             &none         &none         &none         &none                                  &none  &none            &none              &none          &sys_reset     &bootloader
 &none  &kp LEFT_BRACKET  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp RIGHT_BRACKET                      &none  &none            &none              &none          &none          &none
 &none  &kp SEMICOLON     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp EQUAL                              &none  &kp RIGHT_SHIFT  &kp RIGHT_CONTROL  &kp RIGHT_ALT  &kp RIGHT_GUI  &none
 &none  &kp GRAVE         &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp BACKSLASH      &none        &none  &none  &none            &none              &none          &none          &none
