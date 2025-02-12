@@ -44,15 +44,7 @@
         };
     };
 
-    combos {
-        compatible = "zmk,combos";
-
-        special {
-            bindings = <&to 8>;
-            key-positions = <50 57>;
-            layers = <0 1>;
-        };
-    };
+    combos { compatible = "zmk,combos"; };
 
     keymap {
         compatible = "zmk,keymap";
@@ -71,17 +63,17 @@
 &kp TAB           &kp Q           &kp W           &kp F               &kp P             &kp B                                     &kp J            &kp L              &kp U                &kp Y            &kp APOSTROPHE   &kp MINUS
 &kp LEFT_CONTROL  &mt LEFT_GUI A  &mt LEFT_ALT R  &mt LEFT_CONTROL S  &mt LEFT_SHIFT T  &kp G                                     &kp M            &mt RIGHT_SHIFT N  &mt RIGHT_CONTROL E  &mt RIGHT_ALT I  &mt RIGHT_GUI O  &kp RIGHT_CONTROL
 &kp LEFT_SHIFT    &lt 6 Z         &kp X           &kp C               &kp D             &kp V        &kp Q        &kp APOSTROPHE  &kp K            &kp H              &kp COMMA            &kp DOT          &lt 4 SLASH      &kp RIGHT_SHIFT
-                                                  &to 8               &lt 7 ESCAPE      &lt 5 SPACE  &lt 6 TAB    &lt 3 ENTER     &lt 2 BACKSPACE  &lt 4 DELETE       &to 8
+                                                  &to 1               &lt 7 ESCAPE      &lt 5 SPACE  &lt 6 TAB    &lt 3 ENTER     &lt 2 BACKSPACE  &lt 4 DELETE       &to 1
             >;
         };
 
         game {
             bindings = <
-&kp END     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4             &kp NUMBER_5                                           &kp NUMBER_6     &kp NUMBER_7      &kp NUMBER_8        &kp NUMBER_9    &kp NUMBER_0      &kp BACKSPACE
-&kp HOME    &kp Q         &kp W         &kp F         &kp P                    &kp B                                                  &kp J            &kp L             &kp U               &kp Y           &kp SINGLE_QUOTE  &kp MINUS
-&kp PERIOD  &kp A         &kp R         &kp S         &kp T                    &kp G                                                  &kp M            &mt LEFT_SHIFT N  &mt LEFT_CONTROL E  &mt LEFT_ALT I  &mt LEFT_GUI O    &kp LEFT_CONTROL
-&kp COMMA   &lt 6 Z       &kp X         &kp C         &kp D                    &kp V               &trans                &trans       &kp K            &kp H             &kp COMMA           &kp PERIOD      &lt 4 SLASH       &kp LEFT_SHIFT
-                                        &to 0         &mt LEFT_CONTROL ESCAPE  &mt LEFT_ALT SPACE  &mt LEFT_SHIFT TAB    &lt 3 ENTER  &lt 2 BACKSPACE  &lt 4 DELETE      &to 0
+&kp END     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4             &kp NUMBER_5                                              &kp NUMBER_6     &kp NUMBER_7      &kp NUMBER_8        &kp NUMBER_9    &kp NUMBER_0    &kp BACKSPACE
+&kp HOME    &kp Q         &kp W         &kp F         &kp P                    &kp B                                                     &kp J            &kp L             &kp U               &kp Y           &kp APOSTROPHE  &kp MINUS
+&kp PERIOD  &kp A         &kp R         &kp S         &kp T                    &kp G                                                     &kp M            &mt LEFT_SHIFT N  &mt LEFT_CONTROL E  &mt LEFT_ALT I  &mt LEFT_GUI O  &kp LEFT_CONTROL
+&kp COMMA   &lt 6 Z       &kp X         &kp C         &kp D                    &kp V               &kp Q                 &kp APOSTROPHE  &kp K            &kp H             &kp COMMA           &kp PERIOD      &lt 4 SLASH     &kp LEFT_SHIFT
+                                        &to 0         &mt LEFT_CONTROL ESCAPE  &mt LEFT_ALT SPACE  &mt LEFT_SHIFT TAB    &lt 3 ENTER     &lt 2 BACKSPACE  &lt 4 DELETE      &to 0
             >;
 
             label = "game";
@@ -169,18 +161,6 @@
             >;
 
             label = "med";
-        };
-
-        spc {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &to 0   &trans                    &trans  &to 1   &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans
-            >;
-
-            label = "spc";
         };
     };
 };
