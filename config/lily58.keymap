@@ -10,8 +10,6 @@
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
-#include <dt-bindings/zmk/pointing.h>
-#include <dt-bindings/zmk/pointing.h>
 
 / {
     behaviors {
@@ -50,23 +48,26 @@
         to-base {
             bindings = <&to 0>;
             key-positions = <53 54>;
-        };
-
-        to-game {
-            bindings = <&to 1>;
-            key-positions = <52 55>;
+            layers = <0 7>;
         };
 
         to-qwerty {
+            bindings = <&to 7>;
+            key-positions = <52 55>;
+            layers = <0 7>;
+        };
+
+        to-game {
             bindings = <&to 8>;
-            key-positions = <50 57>;
+            key-positions = <51 56>;
+            layers = <0 7>;
         };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        home {
+        colemak {
             // ------------------------------------------------------------------------------------------------------------
             // |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |   `   |
             // |  TAB  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   |   -   |
@@ -76,26 +77,14 @@
 
             display-name = "base";
             bindings = <
-&kp ESCAPE        &kp N1          &kp N2          &kp N3                    &kp N4            &kp N5                                    &kp N6           &kp N7            &kp N8                    &kp N9          &kp N0          &kp BACKSPACE
-&kp TAB           &kp Q           &kp W           &kp F                     &kp P             &kp B                                     &kp J            &kp L             &kp U                     &kp Y           &kp APOSTROPHE  &kp MINUS
+&kp GRAVE         &kp F1          &kp F2          &kp F3                    &kp F4            &kp F5                                    &kp F6           &kp F7            &kp F8                    &kp F9          &kp F10         &kp MINUS
+&kp ESC           &kp Q           &kp W           &kp F                     &kp P             &kp B                                     &kp J            &kp L             &kp U                     &kp Y           &kp APOSTROPHE  &kp BSPC
 &kp LEFT_CONTROL  &mt LEFT_GUI A  &mt LEFT_ALT R  &mt LEFT_CONTROL S        &mt LEFT_SHIFT T  &kp G                                     &kp M            &mt LEFT_SHIFT N  &mt LEFT_CONTROL E        &mt LEFT_ALT I  &mt LEFT_GUI O  &kp LEFT_CONTROL
-&kp LEFT_SHIFT    &lt 6 Z         &kp X           &kp C                     &kp D             &kp V        &kp Q        &kp APOSTROPHE  &kp K            &kp H             &kp COMMA                 &kp DOT         &lt 4 SLASH     &kp LEFT_SHIFT
-                                                  &kp LS(LA(LC(LEFT_GUI)))  &lt 7 ESCAPE      &lt 5 SPACE  &lt 6 TAB    &lt 3 ENTER     &lt 2 BACKSPACE  &lt 4 DELETE      &kp LS(LA(LEFT_CONTROL))
+&kp LEFT_SHIFT    &lt 5 Z         &kp X           &kp C                     &kp D             &kp V        &kp Q        &kp APOSTROPHE  &kp K            &kp H             &kp COMMA                 &kp DOT         &lt 3 SLASH     &kp LEFT_SHIFT
+                                                  &kp LS(LA(LEFT_CONTROL))  &lt 6 ESCAPE      &lt 4 SPACE  &lt 5 TAB    &lt 2 ENTER     &lt 1 BACKSPACE  &lt 3 DELETE      &kp LS(LA(LEFT_CONTROL))
             >;
 
-            label = "home";
-        };
-
-        game {
-            bindings = <
-&kp END     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4             &kp NUMBER_5                                              &kp NUMBER_6     &kp NUMBER_7      &kp NUMBER_8        &kp NUMBER_9    &kp NUMBER_0    &kp BACKSPACE
-&kp HOME    &kp Q         &kp W         &kp F         &kp P                    &kp B                                                     &kp J            &kp L             &kp U               &kp Y           &kp APOSTROPHE  &kp MINUS
-&kp PERIOD  &kp A         &kp R         &kp S         &kp T                    &kp G                                                     &kp M            &mt LEFT_SHIFT N  &mt LEFT_CONTROL E  &mt LEFT_ALT I  &mt LEFT_GUI O  &kp LEFT_CONTROL
-&kp COMMA   &lt 6 Z       &kp X         &kp C         &kp D                    &kp V               &kp Q                 &kp APOSTROPHE  &kp K            &kp H             &kp COMMA           &kp PERIOD      &lt 4 SLASH     &kp LEFT_SHIFT
-                                        &to 0         &mt LEFT_CONTROL ESCAPE  &mt LEFT_ALT SPACE  &mt LEFT_SHIFT TAB    &lt 3 ENTER     &lt 2 BACKSPACE  &lt 4 DELETE      &to 0
-            >;
-
-            label = "game";
+            label = "colemak";
         };
 
         num {
@@ -122,19 +111,19 @@
             label = "sym";
         };
 
-        fun {
+        function {
             bindings = <
-&none  &none            &none   &none   &none              &none                                &none      &none           &none             &none         &none         &none
-&none  &kp PRINTSCREEN  &kp F7  &kp F8  &kp F9             &kp F12                              &none      &none           &none             &none         &none         &none
-&none  &kp SCROLLLOCK   &kp F4  &kp F5  &kp F6             &kp F11                              &kp ENTER  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_GUI  &none
-&none  &kp PAUSE_BREAK  &kp F1  &kp F2  &kp F3             &kp F10    &kp PRINTSCREEN    &none  &kp TAB    &none           &none             &none         &none         &none
-                                &none   &kp K_APPLICATION  &kp SPACE  &kp TAB            &none  &none      &none           &none
+&none  &none            &kp F10  &kp F11     &kp F12        &none                                        &none      &none           &none             &none         &none         &none
+&none  &kp PRINTSCREEN  &kp F7   &kp F8      &kp F9         &kp PRINTSCREEN                              &none      &none           &none             &none         &none         &none
+&none  &kp SCROLLLOCK   &kp F4   &kp F5      &kp F6         &kp SCROLLLOCK                               &kp ENTER  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_GUI  &none
+&none  &kp PAUSE_BREAK  &kp F1   &kp F2      &kp F3         &kp PAUSE_BREAK  &kp K_APPLICATION    &none  &kp TAB    &none           &none             &none         &none         &none
+                                 &kp DELETE  &kp BACKSPACE  &kp SPACE        &kp TAB              &none  &none      &none           &none
             >;
 
-            label = "fun";
+            label = "function";
         };
 
-        nav {
+        arrows {
             // ------------------------------------------------------------------------------------------------------------
             // | BTCLR | BT1 | BT2 |  BT3 |  BT4 |  BT5 |                   |      |       |       |      |       |       |
             // |  F1   |  F2 |  F3 |  F4  |  F5  |  F6  |                   |  F7  |  F8   |  F9   |  F10 |  F11  |  F12  |
@@ -144,15 +133,17 @@
 
             display-name = "nav";
             bindings = <
-&bootloader  &sys_reset         &none                &none             &none                &none                                         &none          &none          &none         &none      &none         &none
-&none        &kp LS(LA(LC(R)))  &kp LA(PRINTSCREEN)  &kp PRINTSCREEN   &kp LS(PRINTSCREEN)  &kp LS(LC(PRINTSCREEN))                       &kp K_REDO     &kp K_PASTE    &kp K_COPY    &kp K_CUT  &kp K_UNDO    &none
-&none        &kp LEFT_GUI       &kp LEFT_ALT         &kp LEFT_CONTROL  &kp LEFT_SHIFT       &kp ENTER                                     &kp LEFT       &kp DOWN       &kp UP_ARROW  &kp RIGHT  &kp CAPSLOCK  &none
-&none        &none              &none                &none             &none                &kp TAB                  &none    &kp K_UNDO  &kp HOME       &kp PAGE_DOWN  &kp PAGE_UP   &kp END    &kp INSERT    &none
-                                                     &none             &none                &none                    &none    &kp ENTER   &kp BACKSPACE  &kp DELETE     &none
+&bootloader  &sys_reset                   &none                &none             &none                &none                                         &none          &none          &none         &none      &none         &none
+&none        &kp LS(LA(LC(PRINTSCREEN)))  &kp LA(PRINTSCREEN)  &kp PRINTSCREEN   &kp LS(PRINTSCREEN)  &kp LS(LC(PRINTSCREEN))                       &kp K_REDO     &kp K_PASTE    &kp K_COPY    &kp K_CUT  &kp K_UNDO    &none
+&none        &kp LEFT_GUI                 &kp LEFT_ALT         &kp LEFT_CONTROL  &kp LEFT_SHIFT       &kp ENTER                                     &kp LEFT       &kp DOWN       &kp UP_ARROW  &kp RIGHT  &kp CAPSLOCK  &none
+&none        &none                        &none                &none             &none                &kp TAB                  &none    &kp K_UNDO  &kp HOME       &kp PAGE_DOWN  &kp PAGE_UP   &kp END    &kp INSERT    &none
+                                                               &none             &none                &none                    &none    &kp ENTER   &kp BACKSPACE  &kp DELETE     &none
             >;
+
+            label = "arrows";
         };
 
-        msc {
+        mouse {
             // ------------------------------------------------------------------------------------------------------------
             // |       |     |     |      |      |      |                   |      |       |       |      |       |       |
             // |   `   |  1  |  2  |  3   |  4   |  5   |                   |  6   |   7   |   8   |  9   |   0   |       |
@@ -162,36 +153,62 @@
 
             display-name = "msc";
             bindings = <
-&none  &none         &none         &none             &none           &none                                &none           &none           &none         &none            &none       &none
-&none  &kp K_UNDO    &kp K_CUT     &kp K_COPY        &kp K_PASTE     &kp K_REDO                           &kp K_REDO      &kp K_PASTE     &kp K_COPY    &kp K_CUT        &kp K_UNDO  &none
-&none  &kp LEFT_GUI  &kp LEFT_ALT  &kp LEFT_CONTROL  &kp LEFT_SHIFT  &kp ENTER                            &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &mkp MB5    &none
-&none  &kp K_UNDO    &kp K_CUT     &kp K_COPY        &kp K_PASTE     &kp K_REDO  &kp TAB      &kp K_UNDO  &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT  &mkp MB4    &none
-                                   &none             &mkp MCLK       &mkp LCLK   &mkp RCLK    &mkp MB2    &mkp MB1        &mkp MB3        &none
+&none  &none         &none         &none             &none           &none                                 &none           &none           &none         &none            &none       &none
+&none  &kp K_UNDO    &kp K_CUT     &kp K_COPY        &kp K_PASTE     &kp K_REDO                            &kp K_REDO      &kp K_PASTE     &kp K_COPY    &kp K_CUT        &kp K_UNDO  &none
+&none  &kp LEFT_GUI  &kp LEFT_ALT  &kp LEFT_CONTROL  &kp LEFT_SHIFT  &kp ENTER                             &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &mkp MB5    &none
+&none  &kp K_UNDO    &kp K_CUT     &kp K_COPY        &kp K_PASTE     &kp K_REDO  &kp K_UNDO    &kp K_UNDO  &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT  &mkp MB4    &none
+                                   &none             &mkp MB3        &mkp MB1    &mkp MB2      &mkp MB2    &mkp MB1        &mkp MB3        &none
             >;
+
+            label = "mouse";
         };
 
-        med {
+        media {
             bindings = <
-&none  &none         &none         &none             &none           &none                              &none             &none                 &none                 &none            &bt BT_CLR     &none
+&none  &none         &none         &none             &none           &none                              &none             &none                 &none                 &none            &none          &none
 &none  &none         &none         &none             &none           &none                              &kp K_REFRESH     &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &kp C_AC_SEARCH  &kp C_AC_HOME  &none
 &none  &kp LEFT_GUI  &kp LEFT_ALT  &kp LEFT_CONTROL  &kp LEFT_SHIFT  &none                              &kp C_PREVIOUS    &kp C_VOLUME_DOWN     &kp C_VOLUME_UP       &kp K_NEXT       &kp K_LOCK     &none
-&none  &none         &none         &none             &none           &none  &none    &ext_power EP_TOG  &bt BT_SEL 0      &bt BT_SEL 1          &bt BT_SEL 2          &bt BT_SEL 3     &bt BT_SEL 4   &none
+&none  &none         &none         &none             &none           &none  &none    &ext_power EP_TOG  &bt BT_SEL 0      &bt BT_SEL 1          &bt BT_SEL 2          &bt BT_SEL 3     &bt BT_SEL 4   &bt BT_CLR
                                    &none             &none           &none  &none    &kp K_STOP         &kp K_PLAY_PAUSE  &kp K_MUTE            &none
             >;
 
-            label = "med";
+            label = "media";
         };
 
         qwerty {
             bindings = <
-&kp GRAVE   &kp N1          &kp N2          &kp N3              &kp N4            &kp N5                                      &kp N6    &kp N7            &kp N8                    &kp N9          &kp N0                   &kp MINUS
-&kp TAB     &kp Q           &kp W           &kp E               &kp R             &kp T                                       &kp Y     &kp U             &kp I                     &kp O           &kp P                    &kp EQUAL
-&kp ESCAPE  &mt LEFT_GUI A  &mt LEFT_ALT S  &mt LEFT_CONTROL D  &mt LEFT_SHIFT F  &kp G                                       &kp H     &mt LEFT_SHIFT J  &mt LEFT_CONTROL K        &mt LEFT_ALT L  &mt LEFT_GUI APOSTROPHE  &kp ENTER
-&kp LSHFT   &kp Z           &kp X           &kp C               &kp V             &kp B      &kp CAPSLOCK    &kp PRINTSCREEN  &kp N     &kp M             &kp COMMA                 &kp DOT         &kp FSLH                 &kp LSHFT
-                                            &kp LGUI            &kp LALT          &kp LCTRL  &kp SPACE       &kp ENTER        &kp BSPC  &kp DEL           &kp LS(LA(LEFT_CONTROL))
+&kp GRAVE         &kp F1          &kp F2          &kp F3              &kp F4            &kp F5                                    &kp F6    &kp F7            &kp F8                    &kp F9          &kp F10                 &kp MINUS
+&kp ESCAPE        &kp Q           &kp W           &kp E               &kp R             &kp T                                     &kp Y     &kp U             &kp I                     &kp O           &kp P                   &kp APOS
+&kp LEFT_CONTROL  &mt LEFT_GUI A  &mt LEFT_ALT S  &mt LEFT_CONTROL D  &mt LEFT_SHIFT F  &kp G                                     &kp H     &mt LEFT_SHIFT J  &mt LEFT_CONTROL K        &mt LEFT_ALT L  &mt LEFT_GUI SEMICOLON  &kp ENTER
+&kp LSHFT         &kp Z           &kp X           &kp C               &kp V             &kp B      &lt 1 Q      &lt 4 APOSTROPHE  &kp N     &kp M             &kp COMMA                 &kp DOT         &kp FSLH                &kp LSHFT
+                                                  &kp LGUI            &kp LALT          &kp LCTRL  &kp SPACE    &kp ENTER         &kp BSPC  &kp DEL           &kp LS(LA(LEFT_CONTROL))
             >;
 
             label = "qwerty";
+        };
+
+        game {
+            bindings = <
+&kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4                   &kp N5                                            &trans  &trans  &trans  &trans  &trans  &trans
+&sl 3      &kp Q   &kp W   &kp E   &kp R                    &kp T                                             &trans  &trans  &trans  &trans  &trans  &trans
+&sl 1      &kp A   &kp S   &kp D   &kp F                    &kp G                                             &trans  &trans  &trans  &trans  &trans  &trans
+&sl 9      &kp Z   &kp X   &kp C   &kp V                    &kp B               &trans                &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                           &trans  &mt LEFT_CONTROL ESCAPE  &mt LEFT_ALT SPACE  &mt LEFT_SHIFT TAB    &trans  &trans  &trans  &trans
+            >;
+
+            label = "game";
+        };
+
+        emag {
+            bindings = <
+&kp MINUS  &kp N0    &kp N9   &kp N8     &kp N7     &kp N6                         &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &kp P     &kp O    &kp I      &kp U      &kp Y                          &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &kp SEMI  &kp L    &kp K      &kp J      &kp H                          &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &kp FSLH  &kp DOT  &kp COMMA  &kp M      &kp N     &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                              &none      &kp LCTRL  &kp LALT  &kp LSHFT    &trans  &trans  &trans  &trans
+            >;
+
+            label = "emag";
         };
     };
 };
