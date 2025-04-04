@@ -50,16 +50,6 @@
             keep-mods = <(MOD_LALT|MOD_RALT)>;
         };
 
-        bt_hold_tap: bt_hold_tap {
-            compatible = "zmk,behavior-hold-tap";
-            label = "BT_HOLD_TAP";
-            bindings = <&bt>, <&bt>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <500>;
-            flavor = "tap-preferred";
-        };
-
         alt_n1: alt_n1 {
             compatible = "zmk,behavior-mod-morph";
             label = "ALT_N1";
@@ -164,11 +154,6 @@
             bindings = <&to 7>;
             key-positions = <2 1>;
             layers = <0>;
-        };
-
-        c_bt_key {
-            bindings = <&bt_hold_tap BT_CLR BT_NXT>;
-            key-positions = <6 7>;
         };
     };
 
