@@ -147,20 +147,18 @@
         to-base {
             bindings = <&to 0>;
             key-positions = <0 1>;
-            layers = <0>;
         };
 
         to-game {
             bindings = <&to 7>;
-            key-positions = <2 1>;
-            layers = <0>;
+            key-positions = <2 3>;
         };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        colemak {
+        base {
             // ------------------------------------------------------------------------------------------------------------
             // |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |   `   |
             // |  TAB  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   |   -   |
@@ -177,7 +175,7 @@
                                                   &kp LS(LA(LEFT_CONTROL))  &lt 6 ESCAPE      &lt 4 SPACE  &lt 5 TAB      &lt 2 ENTER  &lt 1 BACKSPACE  &lt 3 DELETE      &kp LS(LA(LEFT_CONTROL))
             >;
 
-            label = "colemak";
+            label = "base";
         };
 
         num {
@@ -204,7 +202,7 @@
             label = "sym";
         };
 
-        function {
+        fun {
             bindings = <
 &trans  &trans  &kp F10  &kp F11  &kp F12         &kp F16                                     &trans     &trans          &trans            &trans        &trans        &trans
 &trans  &trans  &kp F7   &kp F8   &kp F9          &kp F15                                     &trans     &trans          &trans            &trans        &trans        &trans
@@ -213,10 +211,10 @@
                          &trans   &kp SCROLLLOCK  &kp PRINTSCREEN  &kp PAUSE_BREAK    &trans  &trans     &trans          &trans
             >;
 
-            label = "function";
+            label = "fun";
         };
 
-        arrows {
+        nav {
             // ------------------------------------------------------------------------------------------------------------
             // | BTCLR | BT1 | BT2 |  BT3 |  BT4 |  BT5 |                   |      |       |       |      |       |       |
             // |  F1   |  F2 |  F3 |  F4  |  F5  |  F6  |                   |  F7  |  F8   |  F9   |  F10 |  F11  |  F12  |
@@ -233,10 +231,10 @@
                                                   &trans               &trans               &trans           &trans    &kp ENTER  &kp BACKSPACE  &kp DELETE     &trans
             >;
 
-            label = "arrows";
+            label = "nav";
         };
 
-        mouse {
+        msc {
             // ------------------------------------------------------------------------------------------------------------
             // |       |     |     |      |      |      |                   |      |       |       |      |       |       |
             // |   `   |  1  |  2  |  3   |  4   |  5   |                   |  6   |   7   |   8   |  9   |   0   |       |
@@ -253,10 +251,10 @@
                                     &trans            &trans          &trans     &trans    &mkp MB2  &mkp MB1        &mkp MB3        &trans
             >;
 
-            label = "mouse";
+            label = "msc";
         };
 
-        media {
+        med {
             bindings = <
 &trans  &trans        &trans        &trans            &trans          &trans                        &trans            &trans                &trans                &trans           &trans         &trans
 &trans  &trans        &trans        &trans            &trans          &trans                        &kp K_REFRESH     &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &kp C_AC_SEARCH  &kp C_AC_HOME  &trans
@@ -265,28 +263,28 @@
                                     &trans            &trans          &trans  &trans    &kp K_STOP  &kp K_PLAY_PAUSE  &kp K_MUTE            &trans
             >;
 
-            label = "media";
+            label = "med";
         };
 
-        game {
+        left {
             bindings = <
 &kp GRAVE  &alt_n1  &alt_n2  &alt_f3             &alt_n4                  &alt_n5                                           &trans  &trans  &trans  &trans  &trans  &trans
-&sl 2      &kp Q    &kp W    &kp E               &kp R                    &kp T                                             &trans  &trans  &trans  &trans  &trans  &trans
-&sl 8      &kp A    &kp S    &kp D               &kp F                    &kp G                                             &trans  &trans  &trans  &trans  &trans  &trans
-&sl 1      &kp Z    &kp X    &kp C               &kp V                    &kp B               &kp BACKSPACE         &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&sl 2      &kp Q    &kp W    &kp F               &kp P                    &kp B                                             &trans  &trans  &trans  &trans  &trans  &trans
+&sl 8      &kp A    &kp R    &kp S               &kp T                    &kp G                                             &trans  &trans  &trans  &trans  &trans  &trans
+&sl 1      &kp Z    &kp X    &kp C               &kp D                    &kp V               &kp BACKSPACE         &trans  &trans  &trans  &trans  &trans  &trans  &trans
                              &mt LEFT_GUI ENTER  &mt LEFT_CONTROL ESCAPE  &mt LEFT_ALT SPACE  &mt LEFT_SHIFT TAB    &trans  &trans  &trans  &trans
             >;
 
-            label = "game";
+            label = "left";
         };
 
         right {
             bindings = <
-&kp MINUS  &alt_n6  &alt_n7  &alt_n8    &alt_n9  &alt_n0                         &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &kp J    &kp L    &kp U      &kp Y    &kp SEMI                        &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &kp M    &kp N    &kp E      &kp I    &kp O                           &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &kp K    &kp H    &kp COMMA  &kp DOT  &kp FSLH  &kp DELETE    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                             &trans     &trans   &trans    &trans        &trans  &trans  &trans  &trans
+&kp MINUS  &alt_n6  &alt_n7  &alt_n8    &alt_n9  &alt_n0                        &none  &none  &none  &none  &none  &none
+&trans     &kp J    &kp L    &kp U      &kp Y    &kp SEMI                       &none  &none  &none  &none  &none  &none
+&trans     &kp M    &kp N    &kp E      &kp I    &kp O                          &none  &none  &none  &none  &none  &none
+&trans     &kp K    &kp H    &kp COMMA  &kp DOT  &kp FSLH  &kp DELETE    &none  &none  &none  &none  &none  &none  &none
+                             &trans     &trans   &trans    &trans        &none  &none  &none  &none
             >;
 
             label = "right";
