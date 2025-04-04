@@ -221,11 +221,11 @@
 
         function {
             bindings = <
-&kp F24  &kp F20  &kp F10  &kp F11     &kp F12        &kp F16                       &trans     &trans          &trans            &trans        &trans        &trans
-&kp F23  &kp F19  &kp F7   &kp F8      &kp F9         &kp F15                       &trans     &trans          &trans            &trans        &trans        &trans
-&kp F22  &kp F18  &kp F4   &kp F5      &kp F6         &kp F14                       &kp ENTER  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_GUI  &trans
-&kp F21  &kp F17  &kp F1   &kp F2      &kp F3         &kp F13    &trans     &trans  &kp TAB    &trans          &trans            &trans        &trans        &trans
-                           &kp DELETE  &kp BACKSPACE  &kp SPACE  &kp TAB    &trans  &trans     &trans          &trans
+&trans  &trans  &kp F10  &kp F11  &kp F12         &kp F16                                     &trans     &trans          &trans            &trans        &trans        &trans
+&trans  &trans  &kp F7   &kp F8   &kp F9          &kp F15                                     &trans     &trans          &trans            &trans        &trans        &trans
+&trans  &trans  &kp F4   &kp F5   &kp F6          &kp F14                                     &kp ENTER  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_GUI  &trans
+&trans  &trans  &kp F1   &kp F2   &kp F3          &kp F13          &trans             &trans  &kp TAB    &trans          &trans            &trans        &trans        &trans
+                         &trans   &kp SCROLLLOCK  &kp PRINTSCREEN  &kp PAUSE_BREAK    &trans  &trans     &trans          &trans
             >;
 
             label = "function";
@@ -241,11 +241,11 @@
 
             display-name = "nav";
             bindings = <
-&trans  &trans                       &trans               &trans            &trans               &trans                                        &trans         &trans         &trans        &trans     &trans        &trans
-&trans  &kp LS(LA(LC(PRINTSCREEN)))  &kp LA(PRINTSCREEN)  &kp PRINTSCREEN   &kp LS(PRINTSCREEN)  &kp LS(LC(PRINTSCREEN))                       &kp HOME       &kp PAGE_DOWN  &kp PAGE_UP   &kp END    &kp INSERT    &trans
-&trans  &kp LEFT_GUI                 &kp LEFT_ALT         &kp LEFT_CONTROL  &kp LEFT_SHIFT       &kp ENTER                                     &kp LEFT       &kp DOWN       &kp UP_ARROW  &kp RIGHT  &kp CAPSLOCK  &trans
-&trans  &trans                       &trans               &trans            &trans               &kp TAB                  &trans    &trans     &kp HOME       &kp PAGE_DOWN  &kp PAGE_UP   &kp END    &kp INSERT    &trans
-                                                          &trans            &trans               &trans                   &trans    &kp ENTER  &kp BACKSPACE  &kp DELETE     &trans
+&trans  &trans               &trans               &trans               &trans               &trans                                &trans         &trans         &trans        &trans     &trans        &trans
+&trans  &kp LG(PRINTSCREEN)  &kp LA(PRINTSCREEN)  &kp LC(PRINTSCREEN)  &kp LS(PRINTSCREEN)  &kp PRINTSCREEN                       &kp HOME       &kp PAGE_DOWN  &kp PAGE_UP   &kp END    &kp INSERT    &trans
+&trans  &kp LEFT_GUI         &kp LEFT_ALT         &kp LEFT_CONTROL     &kp LEFT_SHIFT       &kp ENTER                             &kp LEFT       &kp DOWN       &kp UP_ARROW  &kp RIGHT  &kp CAPSLOCK  &trans
+&trans  &trans               &trans               &trans               &trans               &kp TAB          &trans    &trans     &kp HOME       &kp PAGE_DOWN  &kp PAGE_UP   &kp END    &kp INSERT    &trans
+                                                  &trans               &trans               &trans           &trans    &kp ENTER  &kp BACKSPACE  &kp DELETE     &trans
             >;
 
             label = "arrows";
