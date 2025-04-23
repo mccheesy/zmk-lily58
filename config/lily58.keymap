@@ -144,12 +144,14 @@
 
         c_to_base {
             bindings = <&to 0>;
-            key-positions = <4 5>;
+            key-positions = <37 41>;
+            layers = <1>;
         };
 
-        c_to_left {
+        c_to_game {
             bindings = <&to 1>;
-            key-positions = <2 3>;
+            key-positions = <37 41>;
+            layers = <0>;
         };
 
         c_bt_previous {
@@ -166,6 +168,11 @@
             bindings = <&bt BT_CLR>;
             key-positions = <10 11>;
         };
+
+        bootloader {
+            bindings = <&bootloader>;
+            key-positions = <48 49>;
+        };
     };
 
     keymap {
@@ -174,34 +181,25 @@
         base {
             display-name = "base";
             bindings = <
-&sk LEFT_GUI      &kp F1          &kp F2          &kp F3              &kp F4            &kp F5                                   &kp F6           &kp F7            &kp F8              &kp F9          &kp F10         &sk LEFT_GUI
-&sk LEFT_ALT      &kp Q           &kp W           &kp F               &kp P             &kp B                                    &kp J            &kp L             &kp U               &kp Y           &kp APOSTROPHE  &sk LEFT_ALT
-&sk LEFT_CONTROL  &mt LEFT_GUI A  &mt LEFT_ALT R  &mt LEFT_CONTROL S  &mt LEFT_SHIFT T  &kp G                                    &kp M            &mt LEFT_SHIFT N  &mt LEFT_CONTROL E  &mt LEFT_ALT I  &mt LEFT_GUI O  &sk LEFT_CONTROL
-&sk LEFT_SHIFT    &kp Z           &kp X           &kp C               &kp D             &kp V        &sft_lparen    &sft_rparen  &kp K            &kp H             &kp COMMA           &kp DOT         &kp SEMI        &sk LEFT_SHIFT
-                                                  &sl 4               &kp ESCAPE        &lt 3 SPACE  &lt 4 TAB      &lt 4 ENTER  &lt 3 BACKSPACE  &kp DELETE        &sl 3
+&none  &none           &none           &none               &none             &none                                    &none            &none              &none                &none            &none            &none
+&none  &kp Q           &kp W           &kp F               &kp P             &kp B                                    &kp J            &kp L              &kp U                &kp Y            &kp APOSTROPHE   &none
+&none  &mt LEFT_GUI A  &mt LEFT_ALT R  &mt LEFT_CONTROL S  &mt LEFT_SHIFT T  &kp G                                    &kp M            &mt RIGHT_SHIFT N  &mt RIGHT_CONTROL E  &mt RIGHT_ALT I  &mt RIGHT_GUI O  &none
+&none  &kp Z           &kp X           &kp C               &kp D             &kp V        &sft_lparen    &sft_rparen  &kp K            &kp H              &kp COMMA            &kp DOT          &kp SEMI         &none
+                                       &none               &kp ESCAPE        &lt 2 SPACE  &lt 3 TAB      &lt 3 ENTER  &lt 2 BACKSPACE  &kp DELETE         &none
             >;
         };
 
-        left {
-            display-name = "left";
+        game {
+            display-name = "game";
             bindings = <
-&kp EQUAL  &alt_f1  &alt_f2  &alt_f3                 &alt_f4                  &alt_f5                                          &none  &none  &none  &none  &none  &none
-&sl 3      &kp Q    &kp W    &kp F                   &kp P                    &kp B                                            &none  &none  &none  &none  &none  &none
-&sl 2      &kp A    &kp R    &kp S                   &kp T                    &kp G                                            &none  &none  &none  &none  &none  &none
-&sl 4      &kp Z    &kp X    &kp C                   &kp D                    &kp V               &kp BACKSPACE         &none  &none  &none  &none  &none  &none  &none
-                             &mt LEFT_CONTROL ENTER  &mt LEFT_CONTROL ESCAPE  &mt LEFT_ALT SPACE  &mt LEFT_SHIFT TAB    &none  &none  &none  &none
+&kp EQUAL  &alt_f1  &alt_f2  &alt_f3             &alt_f4                  &alt_f5                                                          &none                    &none                     &none                  &none    &none     &kp MINUS
+&kp GRAVE  &kp Q    &kp W    &kp F               &kp P                    &kp B                                                            &kp J                    &kp L                     &kp U                  &kp Y    &kp APOS  &kp SEMI
+&sl 2      &kp A    &kp R    &kp S               &kp T                    &kp G                                                            &kp M                    &kp N                     &kp E                  &kp I    &kp O     &sl 2
+&sl 3      &kp Z    &kp X    &kp C               &kp D                    &kp V               &kp BACKSPACE         &kp DELETE             &kp K                    &kp H                     &kp COMMA              &kp DOT  &kp FSLH  &sl 3
+                             &mt LEFT_GUI ENTER  &mt LEFT_CONTROL ESCAPE  &mt LEFT_ALT SPACE  &mt LEFT_SHIFT TAB    &mt RIGHT_SHIFT ENTER  &mt RIGHT_ALT BACKSPACE  &mt RIGHT_CONTROL DELETE  &mt RIGHT_GUI LA(TAB)
             >;
-        };
 
-        right {
-            display-name = "right";
-            bindings = <
-&kp MINUS  &alt_f6  &alt_f7  &alt_f8    &alt_f9  &alt_f10                   &none  &none  &none  &none  &none  &none
-&trans     &kp J    &kp L    &kp U      &kp Y    &kp SEMI                   &none  &none  &none  &none  &none  &none
-&trans     &kp M    &kp N    &kp E      &kp I    &kp O                      &none  &none  &none  &none  &none  &none
-&trans     &kp K    &kp H    &kp COMMA  &kp DOT  &kp FSLH  &trans    &none  &none  &none  &none  &none  &none  &none
-                             &trans     &trans   &trans    &trans    &none  &none  &none  &none
-            >;
+            label = "game";
         };
 
         num {
@@ -211,18 +209,18 @@
 &trans  &kp LEFT_BRACKET    &kp N7                 &kp N8               &kp N9             &kp RIGHT_BRACKET                       &kp HOME       &kp PAGE_DOWN  &kp PAGE_UP  &kp END    &kp F12    &trans
 &trans  &mt LEFT_GUI GRAVE  &mt LEFT_ALT NUMBER_4  &mt LEFT_CONTROL N5  &mt LEFT_SHIFT N6  &kp EQUAL                               &kp LEFT       &kp DOWN       &kp UP       &kp RIGHT  &kp F11    &trans
 &trans  &kp SLASH           &kp N1                 &kp N2               &kp N3             &kp BACKSLASH      &trans       &trans  &kp LS(LC(Z))  &kp LC(V)      &kp LC(C)    &kp LC(X)  &kp LC(Z)  &trans
-                                                   &to 4                &kp PERIOD         &lt 3 N0           &kp MINUS    &trans  &trans         &trans         &to 0
+                                                   &none                &kp PERIOD         &kp N0             &kp MINUS    &trans  &trans         &trans         &none
             >;
         };
 
         sym {
             display-name = "sym";
             bindings = <
-&trans  &trans                  &trans               &trans                    &trans                 &trans                               &trans          &trans          &trans        &trans           &trans    &trans
-&trans  &kp LEFT_BRACE          &kp AMPERSAND        &kp ASTERISK              &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE                      &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT  &kp F14   &trans
-&trans  &mt LEFT_GUI LS(GRAVE)  &mt LEFT_ALT DOLLAR  &mt LEFT_CONTROL PERCENT  &mt LEFT_SHIFT CARET   &kp LS(EQUAL)                        &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &kp F13   &trans
-&trans  &kp LS(SLASH)           &kp EXCLAMATION      &kp AT_SIGN               &kp HASH               &kp LS(BACKSLASH)  &trans    &trans  &mkp MB1        &mkp MB2        &mkp MB3      &mkp MB4         &mkp MB5  &trans
-                                                     &to 0                     &trans                 &trans             &trans    &trans  &trans          &trans          &to 3
+&trans  &trans              &trans               &trans                    &trans                 &trans                             &trans          &trans          &trans        &trans           &trans    &trans
+&trans  &kp LEFT_BRACE      &kp AMPERSAND        &kp ASTERISK              &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE                    &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT  &kp F14   &trans
+&trans  &mt LEFT_GUI COLON  &mt LEFT_ALT DOLLAR  &mt LEFT_CONTROL PERCENT  &mt LEFT_SHIFT CARET   &kp LS(EQUAL)                      &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &kp F13   &trans
+&trans  &kp TILDE           &kp EXCLAMATION      &kp AT_SIGN               &kp HASH               &kp PIPE         &trans    &trans  &mkp MB1        &mkp MB2        &mkp MB3      &mkp MB4         &mkp MB5  &trans
+                                                 &none                     &trans                 &trans           &trans    &trans  &trans          &trans          &none
             >;
         };
     };
