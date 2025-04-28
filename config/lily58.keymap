@@ -137,6 +137,17 @@
 
             mods = <(MOD_LALT|MOD_RALT)>;
         };
+
+        caps_word_tap: caps_word_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "CAPS_WORD_TAP";
+            bindings = <&kp>, <&caps_word>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <220>;
+            flavor = "balanced";
+            hold-trigger-on-release;
+        };
     };
 
     combos {
@@ -144,13 +155,13 @@
 
         c_to_base {
             bindings = <&to 0>;
-            key-positions = <37 41>;
+            key-positions = <0 1>;
             layers = <1>;
         };
 
         c_to_game {
             bindings = <&to 1>;
-            key-positions = <37 41>;
+            key-positions = <2 3>;
             layers = <0>;
         };
 
@@ -181,7 +192,7 @@
         base {
             display-name = "base";
             bindings = <
-&none  &none           &none           &none               &none             &none                                    &none            &none              &none                &none            &none            &none
+&none  &alt_f1         &alt_f2         &alt_f3             &alt_f4           &alt_f5                                  &alt_f6          &alt_f7            &alt_f8              &alt_f9          &alt_f10         &none
 &none  &kp Q           &kp W           &kp F               &kp P             &kp B                                    &kp J            &kp L              &kp U                &kp Y            &kp APOSTROPHE   &none
 &none  &mt LEFT_GUI A  &mt LEFT_ALT R  &mt LEFT_CONTROL S  &mt LEFT_SHIFT T  &kp G                                    &kp M            &mt RIGHT_SHIFT N  &mt RIGHT_CONTROL E  &mt RIGHT_ALT I  &mt RIGHT_GUI O  &none
 &none  &kp Z           &kp X           &kp C               &kp D             &kp V        &sft_lparen    &sft_rparen  &kp K            &kp H              &kp COMMA            &kp DOT          &kp SEMI         &none
@@ -192,7 +203,7 @@
         game {
             display-name = "game";
             bindings = <
-&kp EQUAL  &alt_f1  &alt_f2  &alt_f3             &alt_f4                  &alt_f5                                                          &none                    &none                     &none                  &none    &none     &kp MINUS
+&kp EQUAL  &alt_f1  &alt_f2  &alt_f3             &alt_f4                  &alt_f5                                                          &alt_f6                  &alt_f7                   &alt_f8                &alt_f9  &alt_f10  &kp MINUS
 &kp GRAVE  &kp Q    &kp W    &kp F               &kp P                    &kp B                                                            &kp J                    &kp L                     &kp U                  &kp Y    &kp APOS  &kp SEMI
 &sl 2      &kp A    &kp R    &kp S               &kp T                    &kp G                                                            &kp M                    &kp N                     &kp E                  &kp I    &kp O     &sl 2
 &sl 3      &kp Z    &kp X    &kp C               &kp D                    &kp V               &kp BACKSPACE         &kp DELETE             &kp K                    &kp H                     &kp COMMA              &kp DOT  &kp FSLH  &sl 3
@@ -205,11 +216,11 @@
         num {
             display-name = "num";
             bindings = <
-&trans  &trans              &trans                 &trans               &trans             &trans                                  &trans         &trans         &trans       &trans     &trans     &trans
-&trans  &kp LEFT_BRACKET    &kp N7                 &kp N8               &kp N9             &kp RIGHT_BRACKET                       &kp HOME       &kp PAGE_DOWN  &kp PAGE_UP  &kp END    &kp F12    &trans
-&trans  &mt LEFT_GUI GRAVE  &mt LEFT_ALT NUMBER_4  &mt LEFT_CONTROL N5  &mt LEFT_SHIFT N6  &kp EQUAL                               &kp LEFT       &kp DOWN       &kp UP       &kp RIGHT  &kp F11    &trans
-&trans  &kp SLASH           &kp N1                 &kp N2               &kp N3             &kp BACKSLASH      &trans       &trans  &kp LS(LC(Z))  &kp LC(V)      &kp LC(C)    &kp LC(X)  &kp LC(Z)  &trans
-                                                   &none                &kp PERIOD         &kp N0             &kp MINUS    &trans  &trans         &trans         &none
+&trans  &trans              &trans                 &trans               &trans             &trans                                  &trans         &trans         &trans       &trans     &trans                 &trans
+&trans  &kp LEFT_BRACKET    &kp N7                 &kp N8               &kp N9             &kp RIGHT_BRACKET                       &kp HOME       &kp PAGE_DOWN  &kp PAGE_UP  &kp END    &kp F12                &trans
+&trans  &mt LEFT_GUI GRAVE  &mt LEFT_ALT NUMBER_4  &mt LEFT_CONTROL N5  &mt LEFT_SHIFT N6  &kp EQUAL                               &kp LEFT       &kp DOWN       &kp UP       &kp RIGHT  &caps_word_tap CAPS 0  &trans
+&trans  &kp SLASH           &kp N1                 &kp N2               &kp N3             &kp BACKSLASH      &trans       &trans  &kp LS(LC(Z))  &kp LC(V)      &kp LC(C)    &kp LC(X)  &kp LC(Z)              &trans
+                                                   &none                &kp PERIOD         &lt 2 N0           &kp MINUS    &trans  &trans         &trans         &none
             >;
         };
 
