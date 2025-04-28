@@ -227,11 +227,11 @@
         sym {
             display-name = "sym";
             bindings = <
-&trans  &trans          &trans           &trans             &trans                 &trans                                                &trans               &trans             &trans        &trans           &trans         &trans
-&trans  &kp LEFT_BRACE  &kp AMPERSAND    &kp ASTERISK       &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE                                       &msc SCRL_LEFT       &msc SCRL_DOWN     &msc SCRL_UP  &msc SCRL_RIGHT  &kp RG(PSCRN)  &trans
-&trans  &mt LGUI LBKT   &mt LALT DOLLAR  &mt LCTRL PERCENT  &mt LSHFT CARET        &mt LS(LC(LALT)) RBKT                                 &mmv MOVE_LEFT       &mmv MOVE_DOWN     &mmv MOVE_UP  &mmv MOVE_RIGHT  &kp PSCRN      &trans
-&trans  &kp LPAR        &kp EXCLAMATION  &kp AT_SIGN        &kp HASH               &kp RPAR               &trans         &trans          &mkp MB1             &mkp MB2           &mkp MB3      &mkp MB4         &mkp MB5       &trans
-                                         &none              &mt LALT LPAR          &mt LCTRL RPAR         &lt 3 UNDER    &lt 3 RG(LEFT)  &mt RCTRL RG(RIGHT)  &mt RALT RG(DOWN)  &none
+&trans  &trans         &trans           &trans            &trans            &trans                                                &trans               &trans             &trans        &trans           &trans         &trans
+&trans  &kp LS(LBKT)   &kp LS(N7)       &kp LS(N8)        &kp LS(N9)        &kp LS(RBKT)                                          &msc SCRL_LEFT       &msc SCRL_DOWN     &msc SCRL_UP  &msc SCRL_RIGHT  &kp RG(PSCRN)  &trans
+&trans  &mt LGUI LBKT  &mt LALT LS(N4)  &mt LCTRL LS(N5)  &mt LSHFT LS(N6)  &mt LS(LC(LALT)) RBKT                                 &mmv MOVE_LEFT       &mmv MOVE_DOWN     &mmv MOVE_UP  &mmv MOVE_RIGHT  &kp PSCRN      &trans
+&trans  &kp LS(N9)     &kp LS(N1)       &kp LS(N2)        &kp LS(N3)        &kp LS(N0)             &trans         &trans          &mkp MB1             &mkp MB2           &mkp MB3      &mkp MB4         &mkp MB5       &trans
+                                        &none             &mt LALT LPAR     &mt LCTRL RPAR         &lt 3 UNDER    &lt 3 RG(LEFT)  &mt RCTRL RG(RIGHT)  &mt RALT RG(DOWN)  &none
             >;
         };
     };
