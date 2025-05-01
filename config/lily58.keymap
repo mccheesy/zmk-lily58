@@ -62,6 +62,78 @@
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
+
+        comma_shift: comma_shift {
+            compatible = "zmk,behavior-mod-morph";
+            label = "COMMA_SHIFT";
+            bindings = <&kp COMMA>, <&kp LPAR>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        comma_ctrl: comma_ctrl {
+            compatible = "zmk,behavior-mod-morph";
+            label = "COMMA_CTRL";
+            bindings = <&comma_shift>, <&kp LBKT>;
+            mods = <(MOD_LCTRL|MOD_RCTRL)>;
+        };
+
+        comma_alt: comma_alt {
+            compatible = "zmk,behavior-mod-morph";
+            label = "COMMA_ALT";
+            bindings = <&comma_ctrl>, <&kp LT>;
+            mods = <(MOD_LALT|MOD_RALT)>;
+        };
+
+        comma_hold: comma_hold {
+            compatible = "zmk,behavior-hold-tap";
+            label = "COMMA_HOLD";
+            bindings = <&kp QMARK>, <&comma_double>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+        };
+
+        comma_double: comma_double {
+            compatible = "zmk,behavior-tap-dance";
+            label = "COMMA_DOUBLE";
+            bindings = <&comma_hold>, <&kp SEMI>;
+        };
+
+        dot_shift: dot_shift {
+            compatible = "zmk,behavior-mod-morph";
+            label = "DOT_SHIFT";
+            bindings = <&kp DOT>, <&kp RPAR>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        dot_ctrl: dot_ctrl {
+            compatible = "zmk,behavior-mod-morph";
+            label = "DOT_CTRL";
+            bindings = <&dot_shift>, <&kp RBKT>;
+            mods = <(MOD_LCTRL|MOD_RCTRL)>;
+        };
+
+        dot_alt: dot_alt {
+            compatible = "zmk,behavior-mod-morph";
+            label = "DOT_ALT";
+            bindings = <&dot_ctrl>, <&kp GT>;
+            mods = <(MOD_LALT|MOD_RALT)>;
+        };
+
+        dot_hold: dot_hold {
+            compatible = "zmk,behavior-hold-tap";
+            label = "DOT_HOLD";
+            bindings = <&kp EXCL>, <&dot_double>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+        };
+
+        dot_double: dot_double {
+            compatible = "zmk,behavior-tap-dance";
+            label = "DOT_DOUBLE";
+            bindings = <&dot_hold>, <&kp COLON>;
+        };
     };
 
     combos {
@@ -109,7 +181,7 @@
 &none  &none  &none  &none       &none       &none                                           &none  &none       &none            &none         &none           &none
 &none  &kp Q  &kp W  &kp F       &kp P       &kp B                                           &kp J  &kp L       &kp U            &kp Y         &kp COLON       &none
 &none  &kp A  &kp R  &hm LALT S  &hm LGUI T  &kp LALT                                        &kp M  &hm RGUI N  &hm RALT E       &kp I         &kp O           &none
-&none  &kp Z  &kp X  &kp C       &kp D       &kp V                   &none        &none      &kp K  &kp H       &ht MINUS COMMA  &ht EXCL DOT  &ht UNDER FSLH  &none
+&none  &kp Z  &kp X  &kp C       &kp D       &kp V                   &none        &none      &kp K  &kp H       &comma_double    &dot_double   &ht UNDER FSLH  &none
                      &none       &none       &mt LS(LC(LALT)) SPACE  &sk LSHFT    &sk RCTRL  &to 2  &none       &none
             >;
         };
