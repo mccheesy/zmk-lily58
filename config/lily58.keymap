@@ -249,11 +249,11 @@
         base {
             display-name = "base";
             bindings = <
-&none  &alt_f1      &alt_f2      &alt_f3       &alt_f4       &alt_f5                                                  &alt_f6              &alt_f7       &alt_f8         &alt_f9          &alt_f10        &none
-&none  &mt LC(Q) Q  &mt LC(W) W  &kp F         &mt LC(P) P   &kp B                                                    &kp J                &kp L         &mt LC(Z) U     &mt LC(LS(Z)) Y  &kp APOSTROPHE  &none
-&none  &hml LGUI A  &hml LALT R  &hml LCTRL S  &hml LSHFT T  &hml LS(LC(LALT)) G                                      &hmr LS(LC(LALT)) M  &hmr RSHFT N  &hmr RCTRL E    &hmr RALT I      &hmr RGUI O     &none
-&none  &mt ESC Z    &mt LC(X) X  &mt LC(C) C   &kp D         &mt LC(V) V          &lprn        &rprn                  &kp K                &kp H         &mt SEMI COMMA  &mt COLON DOT    &mt ESC FSLH    &none
-                                 &none         &none         &lt 3 SPACE          &lt 4 TAB    &hold_sl_shft_del 4 0  &lt 2 BSPC           &none         &none
+&none  &none        &none        &none         &none         &none                                                &none       &none         &none           &none            &none         &none
+&none  &none        &mt LC(W) W  &kp F         &mt LC(P) P   &kp B                                                &kp J       &kp L         &mt LC(Z) U     &mt LC(LS(Z)) Y  &none         &none
+&none  &hml LGUI A  &hml LALT R  &hml LCTRL S  &hml LSHFT T  &hml ESC G                                           &hmr ESC M  &hmr RSHFT N  &hmr RCTRL E    &hmr RALT I      &hmr RGUI O   &none
+&none  &mt Q Z      &mt LC(X) X  &mt LC(C) C   &mt LC(V) D   &mt LC(ESC) V  &mt LC(Q) Q    &mt LC(W) SQT          &kp K       &kp H         &mt SEMI COMMA  &mt COLON DOT    &mt SQT FSLH  &none
+                                 &none         &none         &lt 3 SPACE    &lt 4 TAB      &hold_sl_shft_del 4 0  &lt 2 BSPC  &none         &none
             >;
         };
 
