@@ -17,6 +17,11 @@
     bindings = <&sl>, <&kp>;
 };
 
+&sk {
+    release-after-ms = <500>;
+    quick-release;
+};
+
 / {
     behaviors {
         hml: home_row_mod_left {
@@ -243,6 +248,51 @@
             tapping-term-ms = <220>;
             flavor = "balanced";
         };
+
+        ml: mod_layer {
+            compatible = "zmk,behavior-hold-tap";
+            label = "ML";
+            bindings = <&mo>, <&sk>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+        };
+
+        hyp_mml: hyp_mml {
+            compatible = "zmk,behavior-mod-morph";
+            label = "HYP_MML";
+            bindings = <&kp LEFT>, <&mmv MOVE_LEFT>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL|MOD_LSFT|MOD_LALT|MOD_LGUI)>;
+        };
+
+        hyp_mmd: hyp_mmd {
+            compatible = "zmk,behavior-mod-morph";
+            label = "HYP_MMD";
+            bindings = <&kp DOWN>, <&mmv MOVE_DOWN>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+        };
+
+        hyp_mmu: hyp_mmu {
+            compatible = "zmk,behavior-mod-morph";
+            label = "HYP_MMU";
+            bindings = <&kp UP>, <&mmv MOVE_UP>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL|MOD_LSFT|MOD_LALT|MOD_LGUI)>;
+        };
+
+        hyp_mmr: hyp_mmr {
+            compatible = "zmk,behavior-mod-morph";
+            label = "HYP_MMR";
+            bindings = <&kp RIGHT>, <&mmv MOVE_RIGHT>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_LCTL|MOD_LGUI|MOD_LALT)>;
+        };
     };
 
     combos {
@@ -275,19 +325,34 @@
             key-positions = <57 56 55>;
         };
 
-        fun_layer {
-            bindings = <&mo 2>;
-            key-positions = <52 55>;
+        tab {
+            bindings = <&kp TAB>;
+            key-positions = <28 27>;
         };
 
-        fun_layer_l {
+        esc {
             bindings = <&sl 2>;
             key-positions = <28 27 26>;
         };
 
-        fun_layer_r {
-            bindings = <&sl 2>;
+        bspc {
+            bindings = <&kp BSPC>;
+            key-positions = <26 27>;
+        };
+
+        spc {
+            bindings = <&kp SPACE>;
+            key-positions = <32 31>;
+        };
+
+        enter {
+            bindings = <&kp ENTER>;
             key-positions = <31 32 33>;
+        };
+
+        del {
+            bindings = <&kp DEL>;
+            key-positions = <32 33>;
         };
     };
 
@@ -297,11 +362,11 @@
         base {
             display-name = "base";
             bindings = <
-&none  &none        &none        &none        &none        &none                                   &none        &none        &none            &none         &none           &none
-&none  &none        &as LS(W) W  &as LS(F) F  &as LS(P) P  &as LS(B) B                             &as LS(J) J  &as LS(L) L  &as LS(U) U      &as LS(Y) Y   &none           &none
-&none  &as LS(A) A  &as LS(R) R  &as LS(S) S  &as LS(T) T  &as LS(G) G                             &as LS(M) M  &as LS(N) N  &as LS(E) E      &as LS(I) I   &as LS(O) O     &none
-&none  &as LS(Z) Z  &as LS(X) X  &as LS(C) C  &as LS(D) D  &as LS(V) V   &as LS(Q) Q    &bspc_del  &as LS(K) K  &as LS(H) H  &mt QMARK COMMA  &mt EXCL DOT  &mt SEMI COLON  &none
-                                 &none        &none        &cwt 0 SPACE  &sk LCTRL      &sk LALT   &sl 3        &none        &none
+&none  &none        &none        &none        &none        &none                                  &none        &none        &none            &none         &none           &none
+&none  &as LS(Q) Q  &as LS(W) W  &as LS(F) F  &as LS(P) P  &as LS(B) B                            &as LS(J) J  &as LS(L) L  &as LS(U) U      &as LS(Y) Y   &as DQT SQT     &none
+&none  &as LS(A) A  &as LS(R) R  &as LS(S) S  &as LS(T) T  &as LS(G) G                            &as LS(M) M  &as LS(N) N  &as LS(E) E      &as LS(I) I   &as LS(O) O     &none
+&none  &as LS(Z) Z  &as LS(X) X  &as LS(C) C  &as LS(D) D  &as LS(V) V  &kp LS(ESC)    &kp DEL    &as LS(K) K  &as LS(H) H  &mt QMARK COMMA  &mt EXCL DOT  &mt SEMI COLON  &none
+                                 &none        &none        &lt 2 SPACE  &cwt 0 TAB     &ml 4 RET  &lt 3 BSPC   &none        &none
             >;
         };
 
@@ -310,46 +375,46 @@
             bindings = <
 &kp EQUAL  &alt_f1  &alt_f2  &alt_f3       &alt_f4        &alt_f5                                         &alt_f6        &alt_f7        &alt_f8           &alt_f9  &alt_f10  &kp MINUS
 &kp GRAVE  &kp Q    &kp W    &kp F         &kp P          &kp B                                           &kp J          &kp L          &kp U             &kp Y    &kp APOS  &kp SEMI
-&bspc_del  &kp A    &kp R    &kp S         &kp T          &kp G                                           &kp M          &kp N          &kp E             &kp I    &kp O     &none
-&sl 3      &kp Z    &kp X    &kp C         &kp D          &kp V           &none            &none          &kp K          &kp H          &kp COMMA         &kp DOT  &kp FSLH  &sl 2
+&sl 4      &kp A    &kp R    &kp S         &kp T          &kp G                                           &kp M          &kp N          &kp E             &kp I    &kp O     &none
+&sl 3      &kp Z    &kp X    &kp C         &kp D          &kp V           &kp BSPC         &none          &kp K          &kp H          &kp COMMA         &kp DOT  &kp FSLH  &sl 2
                              &mt LGUI RET  &mt LCTRL ESC  &mt LALT SPACE  &mt LSHFT TAB    &mt RSHFT RET  &mt RALT BSPC  &mt RCTRL DEL  &mt RGUI RA(TAB)
-            >;
-        };
-
-        fun {
-            display-name = "sym";
-            bindings = <
-&none  &none     &none     &none      &none      &none                                     &none   &none      &none      &none     &none     &none
-&none  &none     &none     &none      &none      &none                                     &none   &none      &none      &none     &none     &none
-&none  &sk LGUI  &sk LALT  &sk LCTRL  &sk LSHFT  &none                                     &none   &sk LSHFT  &sk LCTRL  &sk LALT  &sk LGUI  &none
-&none  &kp F1    &kp F2    &kp F3     &kp F4     &kp F5  &kp F11          &kp F12          &kp F6  &kp F7     &kp F8     &kp F9    &kp F10   &none
-                           &none      &none      &to 0   &kp LC(PSCRN)    &lt 2 LC(PSCRN)  &to 0   &none      &none
-            >;
-
-            label = "fun";
-        };
-
-        num {
-            display-name = "num";
-            bindings = <
-&none  &none           &none   &none   &none   &none                                &none     &none      &none      &none      &none      &none
-&none  &none           &kp N7  &kp N8  &kp N9  &kp LBKT                             &kp RBKT  &kp AMPS   &kp MINUS  &kp UNDER  &none      &none
-&none  &mt EQUAL PLUS  &kp N4  &kp N5  &kp N6  &mt STAR FSLH                        &kp BSLH  &kp CARET  &kp PRCNT  &kp DLLR   &kp GRAVE  &none
-&none  &kp N0          &kp N1  &kp N2  &kp N3  &kp LBRC       &kp LT      &kp GT    &kp RBRC  &kp PIPE   &kp AT     &kp HASH   &kp TILDE  &none
-                               &none   &none   &to 0          &kp LPAR    &kp RPAR  &sl 4     &none      &none
             >;
         };
 
         nav {
             bindings = <
-&none  &none     &none           &none           &none            &none                                   &none          &none      &none      &none      &none        &none
-&none  &none     &msc SCRL_LEFT  &mmv MOVE_UP    &msc SCRL_RIGHT  &msc SCRL_UP                            &kp HOME       &kp PG_DN  &kp PG_UP  &kp END    &kp INS      &none
-&none  &sk LALT  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &msc SCRL_DOWN                          &kp LEFT       &kp DOWN   &kp UP     &kp RIGHT  &cwh CAPS 0  &none
-&none  &mkp MB4  &mkp MB5        &mkp MB3        &mkp MB1         &mkp MB2        &none        &none      &kp LS(LC(Z))  &kp LC(V)  &kp LC(C)  &kp LC(X)  &kp LC(Z)    &none
-                                 &none           &none            &to 0           &sk LCTRL    &sk LSHFT  &kp LG(SPACE)  &none      &none
+&none  &none          &none          &none          &none          &none                                              &none          &none      &none      &none      &none          &none
+&none  &kp LG(PG_DN)  &kp LC(PG_DN)  &kp LC(PG_UP)  &kp LG(PG_UP)  &kp C_VOL_UP                                       &kp HOME       &kp PG_DN  &kp PG_UP  &kp END    &cwh CAPS 0    &none
+&none  &sk LGUI       &sk LALT       &sk LCTRL      &sk LSHFT      &kp C_VOL_DN                                       &hyp_mml       &hyp_mmd   &hyp_mmu   &hyp_mmr   &kp LG(SPACE)  &none
+&none  &none          &none          &mkp MB3       &mkp MB4       &mkp MB5      &kp LA(TAB)    &kt LS(LA(LC(LGUI)))  &kp LC(LS(Z))  &kp LC(V)  &kp LC(C)  &kp LC(X)  &kp LC(Z)      &none
+                                     &none          &none          &trans        &trans         &mkp MB2              &mkp MB1       &none      &none
             >;
 
             label = "nav";
+        };
+
+        num {
+            display-name = "num";
+            bindings = <
+&none  &none          &none   &none   &none   &none                              &none    &none      &none      &none     &none     &none
+&none  &mt LBRC LBKT  &kp N7  &kp N8  &kp N9  &kp RBKT                           &kp F1   &kp F2     &kp F3     &kp F4    &kp F5    &none
+&none  &kp PLUS       &kp N4  &kp N5  &kp N6  &kp EQUAL                          &kp F12  &sk LSHFT  &sk LCTRL  &sk LALT  &sk LGUI  &none
+&none  &kp STAR       &kp N1  &kp N2  &kp N3  &kp BSLH   &kp LA(TAB)    &kp F11  &kp F6   &kp F7     &kp F8     &kp F9    &kp F10   &none
+                              &none   &none   &lt 2 N0   &kp MINUS      &trans   &trans   &none      &none
+            >;
+        };
+
+        sym {
+            display-name = "sym";
+            bindings = <
+&none  &none          &none      &none      &none      &none                                            &none      &none          &none          &none          &none          &none
+&none  &mt LBKT LBRC  &kp AMPS   &kp MINUS  &kp PRCNT  &mt RBKT RBRC                                    &kp PSCRN  &kp LS(PSCRN)  &kp LC(PSCRN)  &kp LA(PSCRN)  &kp LG(PSCRN)  &none
+&none  &kp TILDE      &kp CARET  &kp UNDER  &kp DLLR   &kp FSLH                                         &none      &sk LSHFT      &sk LCTRL      &sk LALT       &sk LGUI       &none
+&none  &kp GRAVE      &kp AT     &kp LT     &kp GT     &kp PIPE       &kp LS(LA(TAB))    &kp LG(SPACE)  &none      &none          &none          &none          &none          &none
+                                 &none      &none      &kp LPAR       &kp RPAR           &trans         &trans     &none          &none
+            >;
+
+            label = "fun";
         };
     };
 };
