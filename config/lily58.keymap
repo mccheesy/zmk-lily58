@@ -8,6 +8,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/pointing.h>
 
 #define MEH LC(LS(LALT))
 
@@ -64,14 +65,13 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        cwt: caps_word_tap {
+        cwh: caps_word_hold {
             compatible = "zmk,behavior-hold-tap";
             bindings = <&kp>, <&caps_word>;
 
             #binding-cells = <2>;
             tapping-term-ms = <220>;
             flavor = "balanced";
-            hold-trigger-on-release;
         };
 
         lbkt: ctrl_lbracket {
@@ -186,9 +186,9 @@
             mods = <(MOD_LALT|MOD_RALT)>;
         };
 
-        shft_del: shft_del {
+        bspc_del: bspc_del {
             compatible = "zmk,behavior-mod-morph";
-            label = "SHFT_DEL";
+            label = "BSPC_DEL";
             bindings = <&kp BSPC>, <&kp DEL>;
 
             #binding-cells = <0>;
@@ -198,12 +198,50 @@
         hold_sl_shft_del: hold_sl_shft_del {
             compatible = "zmk,behavior-hold-tap";
             label = "HOLD_SL_SHFT_DEL";
-            bindings = <&sl>, <&shft_del>;
+            bindings = <&sl>, <&bspc_del>;
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
             quick-tap-ms = <150>;
+        };
+
+        comma_qmark: comma_qmark {
+            compatible = "zmk,behavior-mod-morph";
+            label = "COMMA_QMARK";
+            bindings = <&kp COMMA>, <&kp QMARK>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        dot_excl: dot_excl {
+            compatible = "zmk,behavior-mod-morph";
+            label = "DOT_EXCL";
+            bindings = <&kp DOT>, <&kp EXCL>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        as: autoshift {
+            compatible = "zmk,behavior-hold-tap";
+            label = "AS";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <175>;
+            flavor = "balanced";
+        };
+
+        cwt: caps_word_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "CWT";
+            bindings = <&caps_word>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <220>;
+            flavor = "balanced";
         };
     };
 
@@ -212,34 +250,44 @@
 
         c_to_base {
             bindings = <&to 0>;
-            key-positions = <0 1>;
+            key-positions = <42 43>;
             layers = <1>;
         };
 
         c_to_game {
             bindings = <&to 1>;
-            key-positions = <2 3>;
+            key-positions = <43 42>;
             layers = <0>;
         };
 
         c_bt_previous {
             bindings = <&bt BT_PRV>;
-            key-positions = <6 7>;
+            key-positions = <56 55>;
         };
 
         c_bt_next {
             bindings = <&bt BT_NXT>;
-            key-positions = <8 9>;
+            key-positions = <56 57>;
         };
 
         c_bt_clear {
             bindings = <&bt BT_CLR>;
-            key-positions = <10 11>;
+            key-positions = <57 56 55>;
         };
 
-        bootloader {
-            bindings = <&bootloader>;
-            key-positions = <48 49>;
+        fun_layer {
+            bindings = <&mo 2>;
+            key-positions = <52 55>;
+        };
+
+        fun_layer_l {
+            bindings = <&sl 2>;
+            key-positions = <28 27 26>;
+        };
+
+        fun_layer_r {
+            bindings = <&sl 2>;
+            key-positions = <31 32 33>;
         };
     };
 
@@ -249,11 +297,11 @@
         base {
             display-name = "base";
             bindings = <
-&none  &none        &none        &none         &none         &none                                                &none       &none         &none           &none            &none         &none
-&none  &none        &mt LC(W) W  &kp F         &mt LC(P) P   &kp B                                                &kp J       &kp L         &mt LC(Z) U     &mt LC(LS(Z)) Y  &none         &none
-&none  &hml LGUI A  &hml LALT R  &hml LCTRL S  &hml LSHFT T  &hml ESC G                                           &hmr ESC M  &hmr RSHFT N  &hmr RCTRL E    &hmr RALT I      &hmr RGUI O   &none
-&none  &mt Q Z      &mt LC(X) X  &mt LC(C) C   &mt LC(V) D   &mt LC(ESC) V  &mt LC(Q) Q    &mt LC(W) SQT          &kp K       &kp H         &mt SEMI COMMA  &mt COLON DOT    &mt SQT FSLH  &none
-                                 &none         &none         &lt 3 SPACE    &lt 4 TAB      &hold_sl_shft_del 4 0  &lt 2 BSPC  &none         &none
+&none  &none        &none        &none        &none        &none                                   &none        &none        &none            &none         &none           &none
+&none  &none        &as LS(W) W  &as LS(F) F  &as LS(P) P  &as LS(B) B                             &as LS(J) J  &as LS(L) L  &as LS(U) U      &as LS(Y) Y   &none           &none
+&none  &as LS(A) A  &as LS(R) R  &as LS(S) S  &as LS(T) T  &as LS(G) G                             &as LS(M) M  &as LS(N) N  &as LS(E) E      &as LS(I) I   &as LS(O) O     &none
+&none  &as LS(Z) Z  &as LS(X) X  &as LS(C) C  &as LS(D) D  &as LS(V) V   &as LS(Q) Q    &bspc_del  &as LS(K) K  &as LS(H) H  &mt QMARK COMMA  &mt EXCL DOT  &mt SEMI COLON  &none
+                                 &none        &none        &cwt 0 SPACE  &sk LCTRL      &sk LALT   &sl 3        &none        &none
             >;
         };
 
@@ -262,44 +310,46 @@
             bindings = <
 &kp EQUAL  &alt_f1  &alt_f2  &alt_f3       &alt_f4        &alt_f5                                         &alt_f6        &alt_f7        &alt_f8           &alt_f9  &alt_f10  &kp MINUS
 &kp GRAVE  &kp Q    &kp W    &kp F         &kp P          &kp B                                           &kp J          &kp L          &kp U             &kp Y    &kp APOS  &kp SEMI
-&sl 2      &kp A    &kp R    &kp S         &kp T          &kp G                                           &kp M          &kp N          &kp E             &kp I    &kp O     &sl 2
-&sl 4      &kp Z    &kp X    &kp C         &kp D          &kp V           &trans           &trans         &kp K          &kp H          &kp COMMA         &kp DOT  &kp FSLH  &sl 4
+&bspc_del  &kp A    &kp R    &kp S         &kp T          &kp G                                           &kp M          &kp N          &kp E             &kp I    &kp O     &none
+&sl 3      &kp Z    &kp X    &kp C         &kp D          &kp V           &none            &none          &kp K          &kp H          &kp COMMA         &kp DOT  &kp FSLH  &sl 2
                              &mt LGUI RET  &mt LCTRL ESC  &mt LALT SPACE  &mt LSHFT TAB    &mt RSHFT RET  &mt RALT BSPC  &mt RCTRL DEL  &mt RGUI RA(TAB)
             >;
+        };
+
+        fun {
+            display-name = "sym";
+            bindings = <
+&none  &none     &none     &none      &none      &none                                     &none   &none      &none      &none     &none     &none
+&none  &none     &none     &none      &none      &none                                     &none   &none      &none      &none     &none     &none
+&none  &sk LGUI  &sk LALT  &sk LCTRL  &sk LSHFT  &none                                     &none   &sk LSHFT  &sk LCTRL  &sk LALT  &sk LGUI  &none
+&none  &kp F1    &kp F2    &kp F3     &kp F4     &kp F5  &kp F11          &kp F12          &kp F6  &kp F7     &kp F8     &kp F9    &kp F10   &none
+                           &none      &none      &to 0   &kp LC(PSCRN)    &lt 2 LC(PSCRN)  &to 0   &none      &none
+            >;
+
+            label = "fun";
         };
 
         num {
             display-name = "num";
             bindings = <
-&none  &none           &none         &none          &none          &none                                        &none             &none      &none      &none     &none     &none
-&none  &kp LBKT        &kp N7        &kp N8         &kp N9         &kp RBKT                                     &none             &none      &none      &none     &none     &none
-&none  &hml LGUI SEMI  &hml LALT N4  &hml LCTRL N5  &hml LSHFT N6  &hml LS(LC(LALT)) EQUAL                      &sk LS(LC(LALT))  &sk LSHFT  &sk LCTRL  &sk LALT  &sk LGUI  &none
-&none  &kp GRAVE       &kp N1        &kp N2         &kp N3         &kp BSLH                 &none        &none  &none             &none      &none      &none     &none     &none
-                                     &none          &none          &kp N0                   &kp MINUS    &none  &trans            &none      &none
+&none  &none           &none   &none   &none   &none                                &none     &none      &none      &none      &none      &none
+&none  &none           &kp N7  &kp N8  &kp N9  &kp LBKT                             &kp RBKT  &kp AMPS   &kp MINUS  &kp UNDER  &none      &none
+&none  &mt EQUAL PLUS  &kp N4  &kp N5  &kp N6  &mt STAR FSLH                        &kp BSLH  &kp CARET  &kp PRCNT  &kp DLLR   &kp GRAVE  &none
+&none  &kp N0          &kp N1  &kp N2  &kp N3  &kp LBRC       &kp LT      &kp GT    &kp RBRC  &kp PIPE   &kp AT     &kp HASH   &kp TILDE  &none
+                               &none   &none   &to 0          &kp LPAR    &kp RPAR  &sl 4     &none      &none
             >;
         };
 
         nav {
             bindings = <
-&none  &none                        &none            &none       &none                        &none                                   &none          &none      &none      &none      &none        &none
-&none  &mt LG(LS(PG_UP)) LG(PG_UP)  &mt LC(Q) LG(H)  &kp LG(UP)  &mt LS(LG(PG_DN)) LG(PG_DN)  &kp LS(LG(S))                           &kp HOME       &kp PG_DN  &kp PG_UP  &kp END    &kp INS      &none
-&none  &sk LGUI                     &sk LALT         &sk LCTRL   &sk LSHFT                    &sk LS(LC(LALT))                        &kp LEFT       &kp DOWN   &kp UP     &kp RIGHT  &cwt CAPS 0  &none
-&none  &kp LC(Z)                    &kp LC(X)        &kp LC(C)   &kp LC(V)                    &kp LC(LS(Z))     &none    &none        &kp LS(LC(Z))  &kp LC(V)  &kp LC(C)  &kp LC(X)  &kp LC(Z)    &none
-                                                     &none       &none                        &trans            &none    &kp LA(TAB)  &kp LG(SPACE)  &none      &none
+&none  &none     &none           &none           &none            &none                                   &none          &none      &none      &none      &none        &none
+&none  &none     &msc SCRL_LEFT  &mmv MOVE_UP    &msc SCRL_RIGHT  &msc SCRL_UP                            &kp HOME       &kp PG_DN  &kp PG_UP  &kp END    &kp INS      &none
+&none  &sk LALT  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &msc SCRL_DOWN                          &kp LEFT       &kp DOWN   &kp UP     &kp RIGHT  &cwh CAPS 0  &none
+&none  &mkp MB4  &mkp MB5        &mkp MB3        &mkp MB1         &mkp MB2        &none        &none      &kp LS(LC(Z))  &kp LC(V)  &kp LC(C)  &kp LC(X)  &kp LC(Z)    &none
+                                 &none           &none            &to 0           &sk LCTRL    &sk LSHFT  &kp LG(SPACE)  &none      &none
             >;
 
             label = "nav";
-        };
-
-        sym {
-            display-name = "sym";
-            bindings = <
-&none  &none            &none           &none             &none             &none                                                  &none                 &none         &none         &none        &none         &none
-&none  &kp LBRC         &kp AMPS        &kp STAR          &kp PRCNT         &kp RBRC                                               &kp F15               &kp F7        &kp F8        &kp F9       &kp F12       &none
-&none  &hml LGUI COLON  &hmr LALT DLLR  &hml LCTRL UNDER  &hml LSHFT CARET  &hml LS(LC(LALT)) PLUS                                 &mt LS(LC(LALT)) F14  &mt LSHFT F4  &mt LCTRL F5  &mt LALT F6  &mt LGUI F11  &none
-&none  &kp TILDE        &kp EXCL        &kp AT            &kp HASH          &kp PIPE                &none         &none            &kp F13               &kp F1        &kp F2        &kp F3       &kp F10       &none
-                                        &none             &none             &kp LPAR                &lt 4 RPAR    &lt 4 LG(PSCRN)  &kp LC(PSCRN)         &none         &none
-            >;
         };
     };
 };
