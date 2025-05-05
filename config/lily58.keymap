@@ -248,11 +248,11 @@
 
         nav {
             bindings = <
-&none  &none          &none          &none          &none          &none                                                &none          &none      &none      &none      &none          &none
-&none  &kp LG(PG_DN)  &kp LC(PG_DN)  &kp LC(PG_UP)  &kp LG(PG_UP)  &kp C_VOL_UP                                         &kp HOME       &kp PG_DN  &kp PG_UP  &kp END    &cwh CAPS 0    &none
-&none  &sk LGUI       &sk LALT       &sk LCTRL      &sk LSHFT      &kp C_VOL_DN                                         &hyp_mml       &hyp_mmd   &hyp_mmu   &hyp_mmr   &kp LA(SPACE)  &none
-&none  &none          &none          &mkp MB3       &mkp MB4       &mkp MB5      &kp LG(SPACE)    &kt LS(LA(LC(LGUI)))  &kp LC(LS(Z))  &kp LC(V)  &kp LC(C)  &kp LC(X)  &kp LC(Z)      &none
-                                     &none          &none          &trans        &trans           &mkp MB2              &mkp MB1       &none      &none
+&none  &none          &none          &none          &none          &none                                     &none          &none      &none      &none      &none        &none
+&none  &kp LG(PG_DN)  &kp LC(PG_DN)  &kp LC(PG_UP)  &kp LG(PG_UP)  &msc SCRL_UP                              &kp HOME       &kp PG_DN  &kp PG_UP  &kp END    &cwh CAPS 0  &none
+&none  &sk LGUI       &sk LALT       &sk LCTRL      &sk LSHFT      &msc SCRL_DOWN                            &kp LEFT       &kp DOWN   &kp UP     &kp RIGHT  &kp LA(TAB)  &none
+&none  &kp LC(Z)      &kp LC(X)      &kp LC(C)      &kp LC(V)      &kp LC(LS(Z))   &kp LG(SPACE)    &kp DEL  &kp LC(LS(Z))  &kp LC(V)  &kp LC(C)  &kp LC(X)  &kp LC(Z)    &none
+                                     &none          &none          &trans          &trans           &kp RET  &kp BSPC       &none      &none
             >;
 
             label = "nav";
@@ -261,11 +261,11 @@
         num {
             display-name = "num";
             bindings = <
-&none  &none          &none   &none   &none   &none                              &none    &none      &none      &none     &none     &none
-&none  &mt LBRC LBKT  &kp N7  &kp N8  &kp N9  &kp RBKT                           &kp F1   &kp F2     &kp F3     &kp F4    &kp F5    &none
-&none  &kp PLUS       &kp N4  &kp N5  &kp N6  &kp EQUAL                          &kp F12  &sk LSHFT  &sk LCTRL  &sk LALT  &sk LGUI  &none
-&none  &kp STAR       &kp N1  &kp N2  &kp N3  &kp BSLH   &kp LA(TAB)    &kp F11  &kp F6   &kp F7     &kp F8     &kp F9    &kp F10   &none
-                              &none   &none   &lt 2 N0   &kp MINUS      &trans   &trans   &none      &none
+&none  &none          &none   &none   &none   &none                                  &none    &none      &none      &none     &none     &none
+&none  &as LBRC LBKT  &kp N7  &kp N8  &kp N9  &as RBRC RBKT                          &kp F1   &kp F2     &kp F3     &kp F4    &kp F5    &none
+&none  &kp PLUS       &kp N4  &kp N5  &kp N6  &kp EQUAL                              &kp F12  &sk LSHFT  &sk LCTRL  &sk LALT  &sk LGUI  &none
+&none  &kp STAR       &kp N1  &kp N2  &kp N3  &kp BSLH       &kp LA(TAB)    &kp F11  &kp F6   &kp F7     &kp F8     &kp F9    &kp F10   &none
+                              &none   &none   &kp N0         &kp MINUS      &trans   &trans   &none      &none
             >;
         };
 
@@ -280,6 +280,17 @@
             >;
 
             label = "fun";
+        };
+
+        mse {
+            label = "mse";
+            bindings = <
+&none  &none          &none          &none          &none          &none                              &none           &none           &none         &none            &none          &none
+&none  &kp LG(PG_DN)  &kp LC(PG_DN)  &kp LC(PG_UP)  &kp LG(PG_UP)  &to 2                              &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_DOWN   &cwh CAPS 0    &none
+&none  &sk LGUI       &sk LALT       &sk LCTRL      &sk LSHFT      &to 0                              &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &kp LA(SPACE)  &none
+&none  &none          &none          &mkp MB3       &mkp MB4       &mkp MB5  &kp LA(TAB)    &kp DEL   &kp LC(LS(Z))   &kp LC(V)       &kp LC(C)     &kp LC(X)        &kp LC(Z)      &none
+                                     &none          &none          &mkp MB1  &mkp MB2       &mkp MB2  &mkp MB1        &none           &none
+            >;
         };
     };
 };
