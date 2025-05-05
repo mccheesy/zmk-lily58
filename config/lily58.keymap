@@ -196,7 +196,7 @@
         };
 
         esc {
-            bindings = <&sl 2>;
+            bindings = <&sl 5>;
             key-positions = <28 27 26>;
         };
 
@@ -241,18 +241,18 @@
 &kp EQUAL  &alt_f1  &alt_f2  &alt_f3       &alt_f4        &alt_f5                                         &alt_f6        &alt_f7        &alt_f8           &alt_f9  &alt_f10  &kp MINUS
 &kp GRAVE  &kp Q    &kp W    &kp F         &kp P          &kp B                                           &kp J          &kp L          &kp U             &kp Y    &kp APOS  &kp SEMI
 &sl 4      &kp A    &kp R    &kp S         &kp T          &kp G                                           &kp M          &kp N          &kp E             &kp I    &kp O     &none
-&sl 3      &kp Z    &kp X    &kp C         &kp D          &kp V           &kp BSPC         &none          &kp K          &kp H          &kp COMMA         &kp DOT  &kp FSLH  &sl 2
+&sl 3      &kp Z    &kp X    &kp C         &kp D          &kp V           &kp BSPC         &kp DEL        &kp K          &kp H          &kp COMMA         &kp DOT  &kp FSLH  &sl 5
                              &mt LGUI RET  &mt LCTRL ESC  &mt LALT SPACE  &mt LSHFT TAB    &mt LSHFT RET  &mt RALT BSPC  &mt RCTRL DEL  &mt RGUI RA(TAB)
             >;
         };
 
         nav {
             bindings = <
-&none  &none          &none          &none          &none          &none                                     &none          &none      &none      &none      &none        &none
-&none  &kp LG(PG_DN)  &kp LC(PG_DN)  &kp LC(PG_UP)  &kp LG(PG_UP)  &msc SCRL_UP                              &kp HOME       &kp PG_DN  &kp PG_UP  &kp END    &cwh CAPS 0  &none
-&none  &sk LGUI       &sk LALT       &sk LCTRL      &sk LSHFT      &msc SCRL_DOWN                            &kp LEFT       &kp DOWN   &kp UP     &kp RIGHT  &kp LA(TAB)  &none
-&none  &kp LC(Z)      &kp LC(X)      &kp LC(C)      &kp LC(V)      &kp LC(LS(Z))   &kp LG(SPACE)    &kp DEL  &kp LC(LS(Z))  &kp LC(V)  &kp LC(C)  &kp LC(X)  &kp LC(Z)    &none
-                                     &none          &none          &trans          &trans           &kp RET  &kp BSPC       &none      &none
+&none  &none          &none          &none          &none          &none                                    &none          &none      &none      &none      &none        &none
+&none  &kp LG(PG_DN)  &kp LC(PG_DN)  &kp LC(PG_UP)  &kp LG(PG_UP)  &msc SCRL_UP                             &kp HOME       &kp PG_DN  &kp PG_UP  &kp END    &to 5        &none
+&none  &sk LGUI       &sk LALT       &sk LCTRL      &sk LSHFT      &msc SCRL_DOWN                           &kp LEFT       &kp DOWN   &kp UP     &kp RIGHT  &kp LA(TAB)  &none
+&none  &kp LC(Z)      &kp LC(X)      &kp LC(C)      &kp LC(V)      &kp LC(LS(Z))   &kp LG(SPACE)    &trans  &kp LC(LS(Z))  &kp LC(V)  &kp LC(C)  &kp LC(X)  &kp LC(Z)    &none
+                                     &none          &none          &trans          &trans           &trans  &trans         &none      &none
             >;
 
             label = "nav";
@@ -272,11 +272,11 @@
         sym {
             display-name = "sym";
             bindings = <
-&none  &none          &none      &none      &none      &none                                            &none      &none          &none          &none          &none          &none
-&none  &mt LBKT LBRC  &kp AMPS   &kp HASH   &kp PRCNT  &mt RBKT RBRC                                    &kp PSCRN  &kp LS(PSCRN)  &kp LC(PSCRN)  &kp LA(PSCRN)  &kp LG(PSCRN)  &none
-&none  &kp TILDE      &kp CARET  &kp UNDER  &kp DLLR   &kp FSLH                                         &none      &sk LSHFT      &sk LCTRL      &sk LALT       &sk LGUI       &none
-&none  &kp GRAVE      &kp AT     &kp LT     &kp GT     &kp PIPE       &kp LS(LA(TAB))    &kp LG(SPACE)  &none      &none          &none          &none          &none          &none
-                                 &none      &none      &kp LPAR       &kp RPAR           &kp RET        &kp BSPC   &none          &none
+&none  &none          &none      &none      &none      &none                                            &none        &none          &none          &none          &none          &none
+&none  &mt LBKT LBRC  &kp AMPS   &kp HASH   &kp PRCNT  &mt RBKT RBRC                                    &kp PSCRN    &kp LS(PSCRN)  &kp LC(PSCRN)  &kp LA(PSCRN)  &kp LG(PSCRN)  &none
+&none  &kp TILDE      &kp CARET  &kp UNDER  &kp DLLR   &kp PIPE                                         &cwh CAPS 0  &sk LSHFT      &sk LCTRL      &sk LALT       &sk LGUI       &none
+&none  &kp GRAVE      &kp AT     &kp LT     &kp GT     &kp SLASH      &kp LS(LA(TAB))    &kp LG(SPACE)  &none        &none          &none          &none          &none          &none
+                                 &none      &none      &kp LPAR       &kp RPAR           &trans         &trans       &none          &none
             >;
 
             label = "fun";
@@ -286,7 +286,7 @@
             label = "mse";
             bindings = <
 &none  &none          &none          &none          &none          &none                              &none           &none           &none         &none            &none          &none
-&none  &kp LG(PG_DN)  &kp LC(PG_DN)  &kp LC(PG_UP)  &kp LG(PG_UP)  &to 2                              &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_DOWN   &cwh CAPS 0    &none
+&none  &kp LG(PG_DN)  &kp LC(PG_DN)  &kp LC(PG_UP)  &kp LG(PG_UP)  &to 5                              &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_DOWN   &none          &none
 &none  &sk LGUI       &sk LALT       &sk LCTRL      &sk LSHFT      &to 0                              &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &kp LA(SPACE)  &none
 &none  &none          &none          &mkp MB3       &mkp MB4       &mkp MB5  &kp LA(TAB)    &kp DEL   &kp LC(LS(Z))   &kp LC(V)       &kp LC(C)     &kp LC(X)        &kp LC(Z)      &none
                                      &none          &none          &mkp MB1  &mkp MB2       &mkp MB2  &mkp MB1        &none           &none
