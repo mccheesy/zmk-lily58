@@ -240,8 +240,8 @@
             bindings = <
 &kp EQUAL  &alt_f1  &alt_f2  &alt_f3       &alt_f4        &alt_f5                                         &alt_f6        &alt_f7        &alt_f8           &alt_f9  &alt_f10  &kp MINUS
 &kp GRAVE  &kp Q    &kp W    &kp F         &kp P          &kp B                                           &kp J          &kp L          &kp U             &kp Y    &kp APOS  &kp SEMI
-&sl 4      &kp A    &kp R    &kp S         &kp T          &kp G                                           &kp M          &kp N          &kp E             &kp I    &kp O     &none
-&sl 3      &kp Z    &kp X    &kp C         &kp D          &kp V           &kp BSPC         &kp DEL        &kp K          &kp H          &kp COMMA         &kp DOT  &kp FSLH  &sl 5
+&sl 4      &kp A    &kp R    &kp S         &kp T          &kp G                                           &kp M          &kp N          &kp E             &kp I    &kp O     &sl 4
+&sl 3      &kp Z    &kp X    &kp C         &kp D          &kp V           &kp BSPC         &kp DEL        &kp K          &kp H          &kp COMMA         &kp DOT  &kp FSLH  &sl 3
                              &mt LGUI RET  &mt LCTRL ESC  &mt LALT SPACE  &mt LSHFT TAB    &mt LSHFT RET  &mt RALT BSPC  &mt RCTRL DEL  &mt RGUI RA(TAB)
             >;
         };
