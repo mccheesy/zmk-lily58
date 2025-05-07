@@ -30,7 +30,7 @@
 #define B_LT1 &kp ESC
 #define B_LT2 &lt NAV SPACE
 #define B_LT3 &mt LSHFT TAB
-#define B_RT3 &lt SYM RET
+#define B_RT3 &mt LCTL RET
 #define B_RT2 &lt NUM BSPC
 #define B_RT1 &kp DEL
 #define B_RT0 XXX
@@ -39,15 +39,14 @@
 #define B_ENC1 &kp LG(SPACE)
 
 #define B_SQT  &as DQT SQT
-#define B_CMMA &as QMARK COMMA
-#define B_DOT  &as EXCL DOT
-#define B_COLN &as SEMI COLON
+#define B_CMMA &as SEMI COMMA
+#define B_DOT  &as COLON DOT
 
-#define G_LT0 &mt LGUI RET      
+#define G_LT0 &mt LGUI RET
 #define G_LT1 &mt LCTL ESC
 #define G_LT2 &mt LALT SPACE
-#define G_LT3 &mt LSFT TAB      
-#define G_RT3 &mt LSFT RET
+#define G_LT3 &mt LSHFT TAB
+#define G_RT3 &mt LSHFT RET
 #define G_RT2 &mt LALT BSPC
 #define G_RT1 &mt LCTL DEL
 #define G_RT0 &mt LGUI ESC
@@ -55,23 +54,63 @@
 #define G_ENC0 ALT_TAB
 #define G_ENC1 &kp LG(SPACE)
 
+#define N_SEMI   &mt LGUI SEMI
+#define N_N4     &sk_f4 LALT 0
+#define N_N5     &sk_f5 LCTL 0
+#define N_N6     &sk_f6 LSHFT 0
+#define N_EQUAL  &as STAR EQUAL
+#define N_PLUS   &as PLUS MINUS
+#define N_DLLR   &mt LSHFT DLLR
+#define N_PRCNT   &mt LCTL PRCNT
+#define N_CARET   &mt LALT CARET
+#define N_COLON   &mt LGUI COLON
+#define N_LPAR    &as LT LPAR
+#define N_RPAR    &as GT RPAR
+#define N_BSLH    &as FSLH BSLH
+#define N_UNDER   &as EXCL UNDER
+
+#define QUICK_TAP_MS    150
+#define TAPPING_TERM_MS 200
+
 &lt {
-    quick-tap-ms = <150>;
+    flavor = "balanced";
+    tapping-term-ms = <TAPPING_TERM_MS>;
+    quick-tap-ms = <QUICK_TAP_MS>;
     bindings = <&sl>, <&kp>;
 };
 
+&mt {
+    flavor = "balanced";
+    tapping-term-ms = <TAPPING_TERM_MS>;
+    quick-tap-ms = <QUICK_TAP_MS>;
+    bindings = <&sk>, <&kp>;
+};
+
 &sk {
-    release-after-ms = <500>;
-    quick-release;
+    release-after-ms = <1000>;
+};
+
+&sl {
+    release-after-ms = <1000>;
 };
 
 / {
     behaviors {
+        hm: home_row_mod {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&sk>, <&kp>;
+            #binding-cells = <2>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <QUICK_TAP_MS>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-on-release;
+        };
+
         as: autoshift {
             compatible = "zmk,behavior-hold-tap";
             bindings = <&kp>, <&kp>;
             #binding-cells = <2>;
-            tapping-term-ms = <135>;
+            tapping-term-ms = <175>;
             quick-tap-ms = <0>;
             flavor = "tap-preferred";
         };
@@ -80,7 +119,7 @@
             compatible = "zmk,behavior-hold-tap";
             bindings = <&kp>, <&caps_word>;
             #binding-cells = <2>;
-            tapping-term-ms = <220>;
+            tapping-term-ms = <TAPPING_TERM_MS>;
             flavor = "balanced";
         };
 
@@ -88,7 +127,7 @@
             compatible = "zmk,behavior-hold-tap";
             bindings = <&to>, <&kp>;
             #binding-cells = <2>;
-            tapping-term-ms = <220>;
+            tapping-term-ms = <TAPPING_TERM_MS>;
             flavor = "tap-preferred";
         };
 
@@ -96,13 +135,37 @@
             compatible = "zmk,behavior-tri-state";
             #binding-cells = <0>;
             bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
-            ignored-key-positions = <13 25 26 27 28 31 32 33 34 45 52 53 54 55>;
+            ignored-key-positions = <13 26 27 28 29 30 31 32 33 45 52 53 54 55>;
             // 13 = Q
-            // 25 26 27 28 = left-hand arrows
-            // 31 32 33 34 = right-hand arrows
+            // 26 27 28 29 = left-hand arrows
+            // 30 31 32 33 = right-hand arrows
             // 45 = H
             // 52 53 = left-hand thumbs
             // 54 55 = right-hand thumbs
+        };
+
+        sk_f4: sk_alt_f4 {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&sk>, <&alt_f4>;
+            #binding-cells = <2>;
+            tapping-term-ms = <TAPPING_TERM_MS>;
+            flavor = "balanced";
+        };
+
+        sk_f5: sk_alt_f5 {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&sk>, <&alt_f5>;
+            #binding-cells = <2>;
+            tapping-term-ms = <TAPPING_TERM_MS>;
+            flavor = "balanced";
+        };
+
+        sk_f6: sk_alt_f6 {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&sk>, <&alt_f6>;
+            #binding-cells = <2>;
+            tapping-term-ms = <TAPPING_TERM_MS>;
+            flavor = "balanced";
         };
     };
 
@@ -114,34 +177,49 @@
             key-positions = <15 16>;  // FP
         };
 
-        bspc {
-            bindings = <&kp BSPC>;
+        lalt {
+            bindings = <&sk LALT>;
             key-positions = <26 27>; // RS
         };
 
-        esc {
-            bindings = <&kp ESC>;
+        lgui {
+            bindings = <&sk LGUI>;
             key-positions = <26 27 28>; // RST
         };
 
-        tab {
-            bindings = <&kp TAB>;
+        lctl {
+            bindings = <&sk LCTL>;
             key-positions = <27 28>;  // ST
         };
 
-        spc {
-            bindings = <&kp SPACE>;
+        rctl {
+            bindings = <&sk LCTL>;
             key-positions = <31 32>;  // NE
         };
 
-        enter {
-            bindings = <&kp ENTER>;
+        rgui {
+            bindings = <&sk LGUI>;
             key-positions = <31 32 33>;  // NEI
         };
 
-        del {
-            bindings = <&kp DEL>;
+        ralt {
+            bindings = <&sk LALT>;
             key-positions = <32 33>;  // IO
+        };
+
+        c_pscrn {
+            bindings = <&kp LC(PSCRN)>;
+            key-positions = <19 20>;  // LU
+        };
+
+        g_pscrn {
+            bindings = <&kp LG(PSCRN)>;
+            key-positions = <19 20 21>;  // LUY
+        };
+
+        pscrn {
+            bindings = <&kp PSCRN>;
+            key-positions = <20 21>;  // UY
         };
 
         to_mse {
@@ -184,10 +262,10 @@
         base {
             display-name = "base";
             bindings = <
-XXX  XXX    XXX    XXX    XXX    XXX                    XXX    XXX    XXX     XXX    XXX     XXX
-XXX  AS(Q)  AS(W)  AS(F)  AS(P)  AS(B)                  AS(J)  AS(L)  AS(U)   AS(Y)  B_SQT   XXX
-XXX  AS(A)  AS(R)  AS(S)  AS(T)  AS(G)                  AS(M)  AS(N)  AS(E)   AS(I)  AS(O)   XXX
-XXX  AS(Z)  AS(X)  AS(C)  AS(D)  AS(V)  B_ENC0  B_ENC1  AS(K)  AS(H)  B_CMMA  B_DOT  B_COLN  XXX
+XXX  XXX    XXX    XXX    XXX    XXX                    XXX    XXX    XXX     XXX    XXX       XXX
+XXX  AS(Q)  AS(W)  AS(F)  AS(P)  AS(B)                  AS(J)  AS(L)  AS(U)   AS(Y)  B_SQT     XXX
+XXX  AS(A)  AS(R)  AS(S)  AS(T)  AS(G)                  AS(M)  AS(N)  AS(E)   AS(I)  AS(O)     XXX
+XXX  AS(Z)  AS(X)  AS(C)  AS(D)  AS(V)  B_ENC0  B_ENC1  AS(K)  AS(H)  B_CMMA  B_DOT  AS(FSLH)  XXX
                    B_LT0  B_LT1  B_LT2  B_LT3   B_RT3   B_RT2  B_RT1  B_RT0
             >;
         };
@@ -199,29 +277,29 @@ XXX  AS(Z)  AS(X)  AS(C)  AS(D)  AS(V)  B_ENC0  B_ENC1  AS(K)  AS(H)  B_CMMA  B_
 &kp GRAVE  &kp Q    &kp W    &kp F    &kp P    &kp B                    &kp J    &kp L    &kp U      &kp Y    &kp APOS  &kp SEMI
 &sl SYM    &kp A    &kp R    &kp S    &kp T    &kp G                    &kp M    &kp N    &kp E      &kp I    &kp O     &sl SYM
 &sl NUM    &kp Z    &kp X    &kp C    &kp D    &kp V    G_ENC0  G_ENC1  &kp K    &kp H    &kp COMMA  &kp DOT  &kp FSLH  &sl NUM
-                    G_LT0    G_LT1    G_LT2    B_LT3    B_RT3   B_RT2   B_RT1    B_RT0
+                             G_LT0    G_LT1    G_LT2    B_LT3   B_RT3   B_RT2    B_RT1    B_RT0
             >;
         };
 
         nav {
             display-name = "nav";
             bindings = <
-___  ___            ___            ___            ___            ___                       ___            ___        ___        ___        ___          ___
-___  &kp LG(PG_DN)  &kp LC(PG_DN)  &kp LC(PG_UP)  &kp LG(PG_UP)  &msc SCRL_UP              &kp HOME       &kp PG_DN  &kp PG_UP  &kp END    &to MSE      ___
-___  &sk LGUI       &sk LALT       &sk LCTRL      &sk LSHFT      &msc SCRL_DOWN            &kp LEFT       &kp DOWN   &kp UP     &kp RIGHT  &kp LA(TAB)  ___
-___  &kp LC(Z)      &kp LC(X)      &kp LC(C)      &kp LC(V)      &kp LC(LS(Z))   ___  ___  &kp LC(LS(Z))  &kp LC(V)  &kp LC(C)  &kp LC(X)  &kp LC(Z)    ___
-                    ___            ___            ___            ___             ___  ___  ___            ___
+___  ___        ___        ___        ___        ___                      ___           ___           ___         ___            ___           ___
+___  &kp LC(Q)  &kp LC(W)  &kp LC(F)  &kp LC(P)  &kp LC(B)                &kp HOME      &kp PG_DN     &kp PG_UP   &kp END        &to MSE       ___
+___  &sk LGUI   &sk LALT   &sk LCTRL  &sk LSHFT  &kp LC(LS(G))            &kp LEFT      &kp DOWN      &kp UP      &kp RIGHT      &kp LC(PG_UP) ___
+___  &kp LC(Z)  &kp LC(X)  &kp LC(C)  &kp LC(V)  &kp LC(LS(Z))  ___  ___  &kp LC(LEFT)  &kp LC(DOWN)  &kp LC(UP)  &kp LC(RIGHT)  &kp LC(PG_DN) ___
+                           ___        ___        ___            ___  ___  ___           ___           ___
             >;
         };
 
         num {
             display-name = "num";
             bindings = <
-___  ___            ___      ___      ___      ___                  ___      ___        ___        ___       ___       ___
-___  &as LBRC LBKT  &alt_f7  &alt_f8  &alt_f9  &as RBRC RBKT        &kp F10  &kp F11    &kp F12    &kp F13   &kp F14   ___
-___  &kp PLUS       &alt_f4  &alt_f5  &alt_f6  &kp EQUAL            &kp F15  &sk LSHFT  &sk LCTRL  &sk LALT  &sk LGUI  ___
-___  &kp STAR       &alt_f1  &alt_f2  &alt_f3  &kp FSLH   ___  ___  &kp F16  &kp F17    &kp F18    &kp F19   &kp F20   ___
-                    ___      &kp DOT  &kp N0   &kp MINUS  ___  ___  ___      ___
+___  ___        ___      ___      ___       ___                             ___        ___        ___       ___      ___        ___
+___  AS(LBKT)   &alt_f7  &alt_f8  &alt_f9   AS(RBKT)                        &kp LBRC   &kp AMPS   &kp HASH  &kp AT   &kp RBRC   ___
+___  N_SEMI     N_N4     N_N5     N_N6      N_EQUAL                         N_PLUS     N_CARET    N_PRCNT   N_DLLR   N_COLON    ___
+___  AS(GRAVE)  &alt_f1  &alt_f2  &alt_f3   N_BSLH    ___        ___        &kp PIPE   &kp UNDER  N_LPAR    N_RPAR   &kp TILDE  ___
+                         ___      N_UNDER   AS(N0)    AS(MINUS)  &kp UNDER  ___        ___        ___
             >;
         };
 
@@ -230,8 +308,8 @@ ___  &kp STAR       &alt_f1  &alt_f2  &alt_f3  &kp FSLH   ___  ___  &kp F16  &kp
             bindings = <
 ___  ___            ___       ___        ___        ___                       ___          ___            ___            ___            ___            ___
 ___  &as LBKT LBRC  &kp AMPS  &kp LT     &kp GT     &as RBKT RBRC             &kp PSCRN    &kp LS(PSCRN)  &kp LC(PSCRN)  &kp LA(PSCRN)  &kp LG(PSCRN)  ___
-___  &kp TILDE      &kp DLLR  &kp PRCNT  &kp CARET  &kp PIPE                  &cwh CAPS 0  &sk LSHFT      &sk LCTRL      &sk LALT       &sk LGUI       ___
-___  &kp GRAVE      &kp EXCL  &kp AT     &kp HASH   &kp BSLH  ___        ___  XXX          XXX            XXX            XXX            XXX            ___
+___  &kp COLON      &kp DLLR  &kp PRCNT  &kp CARET  &kp PLUS                  &cwh CAPS 0  &sk LSHFT      &sk LCTRL      &sk LALT       &sk LGUI       ___
+___  &kp TILDE      &kp STAR  &kp AT     &kp HASH   &kp PIPE  ___        ___  XXX          XXX            XXX            XXX            XXX            ___
                               ___        &kp LPAR   &kp RPAR  &kp UNDER  ___  ___          ___            XXX
             >;
         };
@@ -239,22 +317,22 @@ ___  &kp GRAVE      &kp EXCL  &kp AT     &kp HASH   &kp BSLH  ___        ___  XX
         mse {
             display-name = "mse";
             bindings = <
-___  ___            ___            ___            ___            ___                           ___             ___             ___           ___              ___            ___
-___  &kp LG(PG_DN)  &kp LC(PG_DN)  &kp LC(PG_UP)  &kp LG(PG_UP)  &to 5                         &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_DOWN   XXX            ___
-___  &sk LGUI       &sk LALT       &sk LCTRL      &sk LSHFT      &to 0                         &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &kp LA(SPACE)  ___
-___  XXX            XXX            &mkp MB3       &mkp MB4       &mkp MB5  ___       ___       &kp LC(LS(Z))   &kp LC(V)       &kp LC(C)     &kp LC(X)        &kp LC(Z)      ___
-                                   ___            XXX            &mkp MB1  &mkp MB2  &mkp MB2  &mkp MB1        XXX             ___
+___  ___            ___            ___            ___            ___                           ___             ___             ___           ___              ___                    ___
+___  &kp LC(Q)      &kp LC(W)      &kp LC(F)      &kp LC(P)      &kp LC(B)                     &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT  &to BASE               ___
+___  &sk LGUI       &sk LALT       &sk LCTRL      &sk LSHFT      &kp LC(LS(G))                 &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &mt LA(TAB) LA(SPACE)  ___
+___  &kp LC(Z)      &kp LC(X)      &kp LC(C)      &kp LC(V)      &kp LC(LS(Z))  ___       ___  &kp LC(LS(Z))   &kp LC(V)       &kp LC(C)     &kp LC(X)        &kp LC(Z)              ___
+                                   &mkp MB5       &mkp MB4       &mkp MB1  &mkp MB2  &mkp MB2  &mkp MB1        &mkp MB4        &mkp MB5
             >;
         };
 
         app {
             display-name = "app";
             bindings = <
-___  ___       ___       ___     ___        ___                       ___      ___       ___       ___     ___        ___
-___  ___       ___       ___     ___        ___                       ___      ___       ___       ___     ___        ___
-___  &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  ___                       ___      &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  ___
-___  ___       ___       ___     ___        ___    ___   ___          ___      ___       ___       ___     ___        ___
-               ___       &to 0   &kp TAB    &kp LS(TAB)  &kp LS(TAB)  &kp TAB  &to 0     ___
+___  ___  ___       ___       ___       ___                                  ___       ___       ___     ___        ___  ___
+___  ___  ___       ___       ___       ___                                  ___       ___       ___     ___        ___  ___
+___  ___  &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT                            &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  ___  ___
+___  ___  ___       ___       ___       ___        ___          ___          ___       ___       ___     ___        ___  ___
+                    ___       &to BASE  &wm        &kp LS(TAB)  &kp LS(TAB)  &wm       &to BASE  ___
             >;
         };
     };
