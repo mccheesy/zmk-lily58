@@ -27,12 +27,12 @@
 #define AS(keycode) &as LS(keycode) keycode
 
 #define B_LT0 XXX
-#define B_LT1 &kp ESC
+#define B_LT1 &mt LGUI ESC
 #define B_LT2 &lt NAV SPACE
 #define B_LT3 &mt LSHFT TAB
 #define B_RT3 &mt LCTL RET
 #define B_RT2 &lt NUM BSPC
-#define B_RT1 &kp DEL
+#define B_RT1 &mt DEL
 #define B_RT0 XXX
 
 #define B_ENC0 ALT_TAB
@@ -54,20 +54,15 @@
 #define G_ENC0 ALT_TAB
 #define G_ENC1 &kp LG(SPACE)
 
-#define N_SEMI   &mt LGUI SEMI
-#define N_N4     &sk_f4 LALT 0
-#define N_N5     &sk_f5 LCTL 0
-#define N_N6     &sk_f6 LSHFT 0
-#define N_EQUAL  &as STAR EQUAL
-#define N_PLUS   &as PLUS MINUS
+#define N_PLUS   &mt EQUAL PLUS
 #define N_DLLR   &mt LSHFT DLLR
-#define N_PRCNT   &mt LCTL PRCNT
-#define N_CARET   &mt LALT CARET
-#define N_COLON   &mt LGUI COLON
-#define N_LPAR    &as LT LPAR
-#define N_RPAR    &as GT RPAR
-#define N_BSLH    &as FSLH BSLH
-#define N_UNDER   &as EXCL UNDER
+#define N_PRCNT  &mt LCTL PRCNT
+#define N_CARET  &mt LALT CARET
+#define N_COLON  &mt LGUI COLON
+
+#define N_LPAR   &as LT LPAR
+#define N_RPAR   &as GT RPAR
+#define N_UNDER  &as EXCL UNDER
 
 #define QUICK_TAP_MS    150
 #define TAPPING_TERM_MS 200
@@ -104,6 +99,7 @@
             quick-tap-ms = <QUICK_TAP_MS>;
             require-prior-idle-ms = <150>;
             hold-trigger-on-release;
+            display-name = "Home Row Mod";
         };
 
         as: autoshift {
@@ -113,6 +109,7 @@
             tapping-term-ms = <175>;
             quick-tap-ms = <0>;
             flavor = "tap-preferred";
+            display-name = "Autoshift";
         };
 
         cwh: caps_word_hold {
@@ -121,6 +118,16 @@
             #binding-cells = <2>;
             tapping-term-ms = <TAPPING_TERM_MS>;
             flavor = "balanced";
+            display-name = "Caps Word-Hold";
+        };
+
+        st: sticky_layer_tap {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&sl>, <&kp>;
+            #binding-cells = <2>;
+            tapping-term-ms = <TAPPING_TERM_MS>;
+            flavor = "tap-preferred";
+            display-name = "Sticky Layer-Tap";
         };
 
         tt: to_tap {
@@ -129,6 +136,7 @@
             #binding-cells = <2>;
             tapping-term-ms = <TAPPING_TERM_MS>;
             flavor = "tap-preferred";
+            display-name = "To Layer-Tap";
         };
 
         wm: wndw_mgmt {
@@ -142,30 +150,112 @@
             // 45 = H
             // 52 53 = left-hand thumbs
             // 54 55 = right-hand thumbs
+            display-name = "Window-Manager";
         };
 
-        sk_f4: sk_alt_f4 {
-            compatible = "zmk,behavior-hold-tap";
-            bindings = <&sk>, <&alt_f4>;
-            #binding-cells = <2>;
-            tapping-term-ms = <TAPPING_TERM_MS>;
-            flavor = "balanced";
+        alt_f1: alt_f1 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&as EXCL N1>, <&kp F1>;
+            mods = <(MOD_LALT|MOD_RALT)>;
         };
 
-        sk_f5: sk_alt_f5 {
-            compatible = "zmk,behavior-hold-tap";
-            bindings = <&sk>, <&alt_f5>;
-            #binding-cells = <2>;
-            tapping-term-ms = <TAPPING_TERM_MS>;
-            flavor = "balanced";
+        alt_f2: alt_f2 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&as AT N2>, <&kp F2>;
+            mods = <(MOD_LALT|MOD_RALT)>;
         };
 
-        sk_f6: sk_alt_f6 {
-            compatible = "zmk,behavior-hold-tap";
-            bindings = <&sk>, <&alt_f6>;
-            #binding-cells = <2>;
-            tapping-term-ms = <TAPPING_TERM_MS>;
-            flavor = "balanced";
+        alt_f3: alt_f3 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&as HASH N3>, <&kp F3>;
+            mods = <(MOD_LALT|MOD_RALT)>;
+        };
+
+        alt_f4: alt_f4 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&as DLLR N4>, <&kp F4>;
+            mods = <(MOD_LALT|MOD_RALT)>;
+        };
+
+        alt_f5: alt_f5 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&as PRCNT N5>, <&kp F5>;
+            mods = <(MOD_LALT|MOD_RALT)>;
+        };
+
+        alt_f6: alt_f6 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&as CARET N6>, <&kp F6>;
+            mods = <(MOD_LALT|MOD_RALT)>;
+        };
+
+        alt_f7: alt_f7 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&as AMPS N7>, <&kp F7>;
+            mods = <(MOD_LALT|MOD_RALT)>;
+        };
+
+        alt_f8: alt_f8 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&as STAR N8>, <&kp F8>;
+            mods = <(MOD_LALT|MOD_RALT)>;
+        };
+
+        alt_f9: alt_f9 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&as LPAR N9>, <&kp F9>;
+            mods = <(MOD_LALT|MOD_RALT)>;
+        };
+
+        alt_f10: alt_f10 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&as TILDE GRAVE>, <&kp F10>;
+            mods = <(MOD_LALT|MOD_RALT)>;
+        };
+
+        alt_f11: alt_f11 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&as COLON SEMI>, <&kp F11>;
+            mods = <(MOD_LALT|MOD_RALT)>;
+        };
+
+        alt_f12: alt_f12 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&as LBRC LBKT>, <&kp F12>;
+            mods = <(MOD_LALT|MOD_RALT)>;
+        };
+
+        alt_f13: alt_f13 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&as FSLH BSLH>, <&kp F13>;
+            mods = <(MOD_LALT|MOD_RALT)>;
+        };
+
+        alt_f14: alt_f14 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&as STAR EQUAL>, <&kp F14>;
+            mods = <(MOD_LALT|MOD_RALT)>;
+        };
+
+        alt_f15: alt_f15 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&as RBRC RBKT>, <&kp F15>;
+            mods = <(MOD_LALT|MOD_RALT)>;
         };
     };
 
@@ -296,9 +386,9 @@ ___  &kp LC(Z)  &kp LC(X)  &kp LC(C)  &kp LC(V)  &kp LC(LS(Z))  ___  ___  &kp LC
             display-name = "num";
             bindings = <
 ___  ___        ___      ___      ___       ___                             ___        ___        ___       ___      ___        ___
-___  AS(LBKT)   &alt_f7  &alt_f8  &alt_f9   AS(RBKT)                        &kp LBRC   &kp AMPS   &kp HASH  &kp AT   &kp RBRC   ___
-___  N_SEMI     N_N4     N_N5     N_N6      N_EQUAL                         N_PLUS     N_CARET    N_PRCNT   N_DLLR   N_COLON    ___
-___  AS(GRAVE)  &alt_f1  &alt_f2  &alt_f3   N_BSLH    ___        ___        &kp PIPE   &kp UNDER  N_LPAR    N_RPAR   &kp TILDE  ___
+___  &alt_f12   &alt_f7  &alt_f8  &alt_f9   &alt_f15                        &kp LBRC   &kp AMPS   &kp HASH  &kp AT   &kp RBRC   ___
+___  &alt_f11   &alt_f4  &alt_f5  &alt_f6   &alt_f14                        N_PLUS     N_CARET    N_PRCNT   N_DLLR   N_COLON    ___
+___  &alt_f10   &alt_f1  &alt_f2  &alt_f3   &alt_f13  ___        ___        &kp PIPE   &kp UNDER  N_LPAR    N_RPAR   &kp TILDE  ___
                          ___      N_UNDER   AS(N0)    AS(MINUS)  &kp UNDER  ___        ___        ___
             >;
         };
