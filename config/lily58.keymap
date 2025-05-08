@@ -32,7 +32,7 @@
 #define B_LT3 &mt LSHFT TAB
 #define B_RT3 &mt LCTL RET
 #define B_RT2 &lt NUM BSPC
-#define B_RT1 &mt DEL
+#define B_RT1 &mt LGUI DEL
 #define B_RT0 XXX
 
 #define B_ENC0 ALT_TAB
@@ -54,10 +54,10 @@
 #define G_ENC0 ALT_TAB
 #define G_ENC1 &kp LG(SPACE)
 
-#define N_PLUS   &mt EQUAL PLUS
-#define N_DLLR   &mt LSHFT DLLR
-#define N_PRCNT  &mt LCTL PRCNT
+#define N_STAR   &mt PLUS STAR
 #define N_CARET  &mt LALT CARET
+#define N_UNDER  &mt LCTL UNDER
+#define N_DLLR   &mt LSHFT DLLR
 #define N_COLON  &mt LGUI COLON
 
 #define N_LPAR   &as LT LPAR
@@ -247,7 +247,7 @@
         alt_f14: alt_f14 {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&as STAR EQUAL>, <&kp F14>;
+            bindings = <&as PLUS EQUAL>, <&kp F14>;
             mods = <(MOD_LALT|MOD_RALT)>;
         };
 
@@ -385,11 +385,11 @@ ___  &kp LC(Z)  &kp LC(X)  &kp LC(C)  &kp LC(V)  &kp LC(LS(Z))  ___  ___  &kp LC
         num {
             display-name = "num";
             bindings = <
-___  ___        ___      ___      ___       ___                             ___        ___        ___       ___      ___        ___
-___  &alt_f12   &alt_f7  &alt_f8  &alt_f9   &alt_f15                        &kp LBRC   &kp AMPS   &kp HASH  &kp AT   &kp RBRC   ___
-___  &alt_f11   &alt_f4  &alt_f5  &alt_f6   &alt_f14                        N_PLUS     N_CARET    N_PRCNT   N_DLLR   N_COLON    ___
-___  &alt_f10   &alt_f1  &alt_f2  &alt_f3   &alt_f13  ___        ___        &kp PIPE   &kp UNDER  N_LPAR    N_RPAR   &kp TILDE  ___
-                         ___      N_UNDER   AS(N0)    AS(MINUS)  &kp UNDER  ___        ___        ___
+___  ___        ___      ___      ___       ___                       ___        ___        ___       ___      ___        ___
+___  &alt_f12   &alt_f7  &alt_f8  &alt_f9   &alt_f15                  &kp LBRC   &kp AMPS   &kp HASH  &kp AT   &kp RBRC   ___
+___  &alt_f11   &alt_f4  &alt_f5  &alt_f6   &alt_f14                  N_STAR     N_CARET    N_UNDER   N_DLLR   N_COLON    ___
+___  &alt_f10   &alt_f1  &alt_f2  &alt_f3   &alt_f13  ___        ___  &kp PIPE   &kp PRCNT  N_LPAR    N_RPAR   &kp TILDE  ___
+                         ___      &kp EXCL  AS(N0)    &kp MINUS  ___  ___        ___        ___
             >;
         };
 
