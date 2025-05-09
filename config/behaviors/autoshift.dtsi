@@ -9,7 +9,7 @@
             tapping-term-ms = <175>;
             quick-tap-ms = <0>;
             flavor = "tap-preferred";
-            display-name = "Autoshift (Custom)"
+            display-name = "Autoshift (Custom)";
         };
     };
 
