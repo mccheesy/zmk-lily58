@@ -1,0 +1,118 @@
+#include <dt-bindings/zmk/keys.h>
+
+#define AS(keycode) &as LS(keycode) keycode
+
+// Standard
+#define AS_A     AS(A)
+#define AS_B     AS(B)
+#define AS_C     AS(C)
+#define AS_D     AS(D)
+#define AS_E     AS(E)
+#define AS_F     AS(F)
+#define AS_G     AS(G)
+#define AS_H     AS(H)
+#define AS_I     AS(I)
+#define AS_J     AS(J)
+#define AS_K     AS(K)
+#define AS_L     AS(L)
+#define AS_M     AS(M)
+#define AS_N     AS(N)
+#define AS_O     AS(O)
+#define AS_P     AS(P)
+#define AS_Q     AS(Q)
+#define AS_R     AS(R)
+#define AS_S     AS(S)
+#define AS_T     AS(T)
+#define AS_U     AS(U)
+#define AS_V     AS(V)
+#define AS_X     AS(X)
+#define AS_W     AS(W)
+#define AS_Y     AS(Y)
+#define AS_Z     AS(Z)
+#define AS_GRAVE AS(GRAVE)
+#define AS_N1    AS(N1)
+#define AS_N2    AS(N2)
+#define AS_N3    AS(N3)
+#define AS_N4    AS(N4)
+#define AS_N5    AS(N5)
+#define AS_N6    AS(N6)
+#define AS_N7    AS(N7)
+#define AS_N8    AS(N8)
+#define AS_N9    AS(N9)
+#define AS_N0    AS(N0)
+#define AS_MINUS AS(MINUS)
+#define AS_EQUAL AS(EQUAL)
+#define AS_BSLH  AS(BSLH)
+#define AS_LBKT  AS(LBKT)
+#define AS_RBKT  AS(RBKT)
+#define AS_SEMI  AS(SEMI)
+#define AS_SQT   AS(SQT)
+#define AS_COMMA AS(COMMA)
+#define AS_DOT   AS(DOT)
+#define AS_FSLH  AS(FSLH)
+
+// Reversed
+#define AS_TILDE &as GRAVE TILDE
+#define AS_EXCL  &as N1 EXCL
+#define AS_AT    &as N2 AT
+#define AS_HASH  &as N3 HASH
+#define AS_DLLR  &as N4 DLLR
+#define AS_PRCNT &as N5 PRCNT
+#define AS_CARET &as N6 CARET
+#define AS_AMPS  &as N7 AMPS
+#define AS_STAR  &as N8 STAR
+#define AS_LPAR  &as N9 LPAR
+#define AS_RPAR  &as N0 RPAR
+#define AS_UNDER &as MINUS UNDER
+#define AS_PLUS  &as EQUAL PLUS
+#define AS_PIPE  &as BSLH PIPE
+#define AS_LBRC  &as LBKT LBRC
+#define AS_RBRC  &as RBKT RBRC
+#define AS_COLON &as SEMI COLON
+#define AS_DQT   &as SQT DQT
+#define AS_LT    &as COMMA LT
+#define AS_GT    &as DOT RT
+#define AS_QMARK &as FSLH QMARK
+
+// Custom mod-shifts
+#define AS_COMMA2 &as SEMI COMMA
+#define AS_COMMA3 &as QMARK COMMA
+#define AS_DOT2   &as COLON DOT
+#define AS_DOT3   &as EXCL DOT
+#define AS_EXCL2  &as QMARK EXCL
+#define AS_LPAR2  &as LT LPAR
+#define AS_RPAR2  &as GT RPAR
+
+/ {
+    behaviors {
+        as: autoshift {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&kp>, <&kp>;
+            #binding-cells = <2>;
+            tapping-term-ms = <175>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            display-name = "Autoshift";
+        };
+
+        // Tap: &kp | Hold: Shift Caps Word.
+        ms: magic_shift {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&scw>, <&kp>;
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            display-name = "Magic Shift-Tap";
+        };
+
+        // Unmodded: Shift | With Shift: Caps Word.
+        scw: shift_caps_word {
+            compatible = "zmk,behavior-mod-morph";
+            bindings = <&sk LSHFT>, <&caps_word>;
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+            display-name = "Magic Shift";
+        };
+
+    };
+};
