@@ -23,13 +23,6 @@
     bindings = <&lsk>, <&kp>;
 };
 
-&sl {
-    bindings = <&sl>, <&kp>;
-    flavor = "tap-preferred";
-    tapping-term-ms = <200>;
-    release-after-ms = <1000>;
-};
-
 / {
     behaviors {
         x: none {
