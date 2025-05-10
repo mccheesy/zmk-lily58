@@ -28,13 +28,13 @@
 / {
     behaviors {
         x: none {
-            compatible = "zmk-behavior-none";
+            compatible = "zmk,behavior-none";
             #binding-cells = <0>;
             display-name = "None";
         };
 
         _: transparent {
-            compatible = "zmk-behavior-trans";
+            compatible = "zmk,behavior-trans";
             #binding-cells = <0>;
             display-name = "Transparent";
         };
