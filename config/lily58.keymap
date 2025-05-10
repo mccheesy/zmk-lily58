@@ -245,7 +245,7 @@
 &as GRAVE  &as Q   &as W   &as F   &as P         &as B                                &as J      &as L         &as U       &as Y     &as SQT   &as SEMI
 &as_lpar2  &as A   &as R   &as S   &as T         &as G                                &as M      &as N         &as E       &as I     &as O     &as_rpar2
 &as LBKT   &as Z   &as X   &as C   &as D         &as V        &alt_tab  &launch       &as K      &as H         &as_comma3  &as_dot3  &as FSLH  &as RBKT
-                           &x      &mt LGUI ESC  &lt 2 SPACE  &ms TAB   &mt LCTL RET  &lt 3 BSPC  &mt LGUI DEL  XXX
+                           &x      &mt LGUI ESC  &lt 2 SPACE  &ms TAB   &mt LCTL RET  &lt 3 BSPC  &mt LGUI DEL  &x
             >;
         };
 
@@ -298,7 +298,7 @@
 &_   &kp LC(Q)   &kp LC(W)  &kp LC(T)   &kp LC(P)    &kp LC(B)                &kp HOME       &kp PG_DN     &kp PG_UP   &kp END        &to 4          &_
 &_   &sk LGUI    &sk LALT   &sk LCTRL   &sk LSHFT    &kp LC(LG(G))            &kp LEFT       &kp DOWN      &kp UP      &kp RIGHT      &kp LC(PG_UP)  &_
 &_   &undo       &cut       &copy       &paste       &redo          &_   &_   &kp LC(LEFT)   &kp LC(DOWN)  &kp LC(UP)  &kp LC(RIGHT)  &kp LC(PG_DN)  &_
-                            &x          &_           &_             &_   &_   &lc_t LC(RET)  &_            XXX
+                            &x          &_           &_             &_   &_   &lc_t LC(RET)  &_            &_
             >;
         };
 
@@ -324,7 +324,7 @@
 &_   &kp LBKT       &kp N7       &kp N8       &kp N9        &kp RBKT                      &kp LBRC   &kp AMPS        &kp HASH        &kp AT         &kp RBRC        &_
 &_   &hm LGUI SEMI  &hm LALT N4  &hm LCTL N5  &hm LSHFT N6  &as EQUAL                     &kp PRCNT  &hm LSFT CARET  &hm LCTL UNDER  &hm LALT DLLR  &hm LGUI COLON  &_
 &_   &kp GRAVE      &kp N1       &kp N2       &kp N3        &kp BSLH   &kp LT     &kp GT  &kp PIPE   &kp STAR        &kp LPAR        &kp RPAR       &kp TILDE       &_
-                                 &x           &kp PLUS      &kp N0     &kp MINUS  &_      &_         &_              XXX
+                                 &x           &kp PLUS      &kp N0     &kp MINUS  &_      &_         &_              &_
             >;
         };
 
@@ -376,7 +376,7 @@
 &_    &_        &_        &_      &_         &_                          &_        &_        &_        &_      &_         &_
 &_    &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &_                          &_        &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &_
 &_    &_        &_        &_      &_         &_        &_       &_       &_        &_        &_        &_      &_         &_
-                          &x      &to 0      &alt_tab  &kp RET  &kp RET  &alt_tab  &to 0     &x
+                          &_      &to 0      &alt_tab  &kp RET  &kp RET  &alt_tab  &to 0     &_
             >;
         };
     };
