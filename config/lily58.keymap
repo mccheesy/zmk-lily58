@@ -61,12 +61,24 @@
         };
 
         // Unmodded: Shift | With Shift: Caps Word.
-        scw: shift_caps_word {
+        ms: magicshift {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&sk LSHFT>, <&caps_word>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
             display-name = "Magic Shift";
+        };
+
+        // Tap: &kp | Hold: Shift Caps Word.
+        ms_t: magic_shift_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&ms>, <&kp>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <150>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-on-release;
+            display-name = "Magic Shift Tap";
         };
     };
 
@@ -120,22 +132,6 @@
             display-name = "Launcher";
         };
 
-        // Tap: &kp | Hold: Shift Caps Word.
-        ms: magic_shift_tap {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings
-                = <&macro_press>
-                , <&macro_param_1to2>
-                , <&mt &scw &kp MACRO_PLACEHOLDER>
-                , <&macro_pause_for_release>
-                , <&macro_release>
-                , <&macro_param_1to2>
-                , <&mt &scw &kp MACRO_PLACEHOLDER>
-                ;
-            display-name = "Magic Shift-Tap";
-        };
-
         // Hold: Caps Lock; Tap: Caps Word
         cw: caps_caps_word {
             compatible = "zmk,behavior-macro";
@@ -157,6 +153,11 @@
         wm_combo {
             bindings = <&alt_tab>;
             key-positions = <15 16>;  // FP
+        };
+
+        tab {
+            bindings = <&kp TAB>;
+            key-positions = <25 26>;  //  AR
         };
 
         lalt {
@@ -245,7 +246,7 @@
 &as GRAVE  &as Q   &as W   &as F   &as P         &as B                                &as J       &as L         &as U       &as Y     &as SQT   &as SEMI
 &as_lpar2  &as A   &as R   &as S   &as T         &as G                                &as M       &as N         &as E       &as I     &as O     &as_rpar2
 &as LBKT   &as Z   &as X   &as C   &as D         &as V        &alt_tab  &launch       &as K       &as H         &as_comma3  &as_dot3  &as FSLH  &as RBKT
-                           &x      &mt LGUI ESC  &lt 2 SPACE  &ms TAB   &mt LCTL RET  &lt 3 BSPC  &mt LGUI DEL  &x
+                           &x      &mt LGUI ESC  &lt 2 SPACE  &ms       &mt LCTL RET  &lt 3 BSPC  &mt LGUI DEL  &x
             >;
         };
 
