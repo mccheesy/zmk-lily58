@@ -20,12 +20,7 @@
     flavor = "balanced";
     tapping-term-ms = <200>;
     quick-tap-ms = <150>;
-    bindings = <&sk>, <&kp>;
-};
-
-&sk {
-    tapping-term-ms = <200>;
-    release-after-ms = <1000>;
+    bindings = <&lsk>, <&kp>;
 };
 
 &sl {
@@ -58,6 +53,16 @@
             require-prior-idle-ms = <150>;
             hold-trigger-on-release;
             display-name = "Home Row Mod";
+        };
+        
+        lsk: lazy_sticky_key {
+            compatible = "zmk,behavior-sticky-key";
+            #binding-cells = <1>;
+            release-after-ms = <1000>;
+            bindings = <&kp>;
+            lazy;
+            ignore-modifiers;
+            display-name = "Lazy Sticky Key";
         };
 
         // Unmodded: Shift | With Shift: Caps Word.
