@@ -190,17 +190,17 @@
         };
 
         c_pscrn {
-            bindings = <&kp LC(PSCR)>;
+            bindings = <&kp LC(PSCRN)>;
             key-positions = <19 20>;  // LU
         };
 
         g_pscrn {
-            bindings = <&kp LG(PSCR)>;
+            bindings = <&kp LG(PSCRN)>;
             key-positions = <19 20 21>;  // LUY
         };
 
         pscrn {
-            bindings = <&kp PSCR>;
+            bindings = <&kp PSCRN>;
             key-positions = <20 21>;  // UY
         };
 
