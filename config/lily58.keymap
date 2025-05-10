@@ -34,7 +34,7 @@
         };
 
         _: transparent {
-            compatible = "zmk,behavior-trans";
+            compatible = "zmk,behavior-transparent";
             #binding-cells = <0>;
             display-name = "Transparent";
         };
