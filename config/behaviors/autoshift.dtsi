@@ -47,7 +47,7 @@
         #define AS_TILDE  &asc GRAVE TILDE
         as_tilde:  autoshift_tilde {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc GRAVE TILDE>
@@ -60,7 +60,7 @@
 
         as_excl: autoshift_excl {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc N1 EXCL>
@@ -73,7 +73,7 @@
 
         as_at: autoshift_at {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc N2 AT>
@@ -86,7 +86,7 @@
 
         as_hash: autoshift_hash {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc N3 HASH>
@@ -99,7 +99,7 @@
 
         as_dllr: autoshift_dllr {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc N4 DLLR>
@@ -112,7 +112,7 @@
 
         as_prcnt: autoshift_prcnt {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc N5 PRCNT>
@@ -125,7 +125,7 @@
 
         as_caret: autoshift_caret {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc N6 CARET>
@@ -138,7 +138,7 @@
 
         as_amps: autoshift_amps {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc N7 AMPS>
@@ -151,7 +151,7 @@
 
         as_star: autoshift_star {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc N8 STAR>
@@ -164,7 +164,7 @@
 
         as_lpar: autoshift_lpar {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc N9 LPAR>
@@ -177,7 +177,7 @@
 
         as_rpar: autoshift_rpar {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc N0 RPAR>
@@ -190,7 +190,7 @@
 
         as_under: autoshift_under {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc MINUS UNDER>
@@ -203,7 +203,7 @@
 
         as_plus: autoshift_plus {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc EQUAL PLUS>
@@ -216,7 +216,7 @@
 
         as_pipe: autoshift_pipe {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc BSLH PIPE>
@@ -229,7 +229,7 @@
 
         as_lbrc: autoshift_lbrc {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc LBKT LBRC>
@@ -242,7 +242,7 @@
 
         as_rbrc: autoshift_rbrc {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc RBKT RBRC>
@@ -255,7 +255,7 @@
 
         as_colon: autoshift_colon {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc SEMI COLON>
@@ -268,7 +268,7 @@
 
         as_dqt: autoshift_dqt {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc SQT DQT>
@@ -281,7 +281,7 @@
 
         as_lt: autoshift_lt {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc COMMA LT>
@@ -294,7 +294,7 @@
 
         as_gt: autoshift_gt {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc DOT GT>
@@ -307,7 +307,7 @@
 
         as_qmark: autoshift_qmark {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc FSLH QMARK>
@@ -321,7 +321,7 @@
         // Custom mod-shifts
         as_comma2: autoshift_comma2 {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc SEMI COMMA>
@@ -334,7 +334,7 @@
 
         as_comma3: autoshift_comma3 {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc QMARK COMMA>
@@ -347,7 +347,7 @@
 
         as_dot2: autoshift_dot2 {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc COLON DOT>
@@ -360,7 +360,7 @@
 
         as_dot3: autoshift_dot3 {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc EXCL DOT>
@@ -373,7 +373,7 @@
 
         as_excl2: autoshift_excl2 {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc QMARK EXCL>
@@ -386,7 +386,7 @@
 
         as_lpar2: autoshift_lpar2 {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc LT LPAR>
@@ -399,7 +399,7 @@
 
         as_rpar2: autoshift_rpar2 {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             bindings
                 = <&macro_press>
                 , <&asc GT RPAR>
