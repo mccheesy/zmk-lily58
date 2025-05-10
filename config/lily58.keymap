@@ -245,7 +245,7 @@
 &as GRAVE  &as Q   &as W   &as F   &as P         &as B                                &as J      &as L         &as U       &as Y     &as SQT   &as SEMI
 &as_lpar2  &as A   &as R   &as S   &as T         &as G                                &as M      &as N         &as E       &as I     &as O     &as_rpar2
 &as LBKT   &as Z   &as X   &as C   &as D         &as V        &alt_tab  &launch       &as K      &as H         &as_comma3  &as_dot3  &as FSLH  &as RBKT
-                           &x      &mt LGUI ESC  &lt 2 SPACE  &ms TAB   &mt LCTL RET  &t 3 BSPC  &mt LGUI DEL  XXX
+                           &x      &mt LGUI ESC  &lt 2 SPACE  &ms TAB   &mt LCTL RET  &lt 3 BSPC  &mt LGUI DEL  XXX
             >;
         };
 
