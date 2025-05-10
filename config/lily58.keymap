@@ -1,6 +1,8 @@
 // dt-formatter: multilineListCommaStyle="leading"
 
 #include <behaviors.dtsi>
+#include <behaviors/none.dtsi>
+#include <behaviors/transparent.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/mouse.h>
