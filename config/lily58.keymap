@@ -267,11 +267,11 @@
 //                                           ┃     GUI     ┃  ESC (CTL)  ┃  SPC (ALT)  ┃  TAB (SHFT) ┃ ┃  RET (SHFT) ┃ BSPC (ALT)  ┃  DEL (CTL)  ┃     GUI     ┃
 //                                           ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛ ┗━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛
             bindings = <
-&kp EQUAL  &alt_f1  &alt_f2 &alt_f3   &alt_f4    &alt_f5                            &alt_f6     &alt_f7    &alt_f8    &alt_f9  &alt_f10  &kp MINUS
-&kp GRAVE  &kp Q    &kp W   &kp F     &kp P      &kp B                              &kp J       &kp L      &kp U      &kp Y    &kp APOS  &kp SEMI
-&kp LPAR   &kp A    &kp R   &kp S     &kp T      &kp G                              &kp M       &kp N      &kp E      &kp I    &kp O     &kp RPAR
-&sl 3      &kp Z    &kp X   &kp C     &kp D      &kp V        &alt_tab   &launch    &kp K       &kp H      &kp COMMA  &kp DOT  &kp FSLH  &sl 3
-                            &kp LGUI  &lc_t ESC  &la_t SPACE  &ls_t TAB  &ls_t RET  &la_t BSPC  &lc_t DEL  &kp LGUI
+&kp EQUAL  &alt_f1  &alt_f2 &alt_f3   &alt_f4       &alt_f5                                       &alt_f6        &alt_f7       &alt_f8    &alt_f9  &alt_f10  &kp MINUS
+&kp GRAVE  &kp Q    &kp W   &kp F     &kp P         &kp B                                         &kp J          &kp L         &kp U      &kp Y    &kp APOS  &kp SEMI
+&kp LPAR   &kp A    &kp R   &kp S     &kp T         &kp G                                         &kp M          &kp N         &kp E      &kp I    &kp O     &kp RPAR
+&sl 3      &kp Z    &kp X   &kp C     &kp D         &kp V           &alt_tab       &launch        &kp K          &kp H         &kp COMMA  &kp DOT  &kp FSLH  &sl 3
+                            &kp LGUI  &mt LCTL ESC  &mt LALT SPACE  &mt LSHFT TAB  &mt LSHFT RET  &mt LALT BSPC  &mt LCTL DEL  &kp LGUI
             >;
         };
 
