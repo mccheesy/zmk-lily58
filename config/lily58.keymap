@@ -72,35 +72,35 @@
 
     macros {
         copy: copy {
-            compatible = "zmk-behavior-macro";
+            compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LC(C)>;
             display-name = "Copy";
         };
 
         cut: cut {
-            compatible = "zmk-behavior-macro";
+            compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LC(X)>;
             display-name = "Cut";
         };
 
         paste: paste {
-            compatible = "zmk-behavior-macro";
+            compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LC(V)>;
             display-name = "Paste";
         };
 
         redo: redo {
-            compatible = "zmk-behavior-macro";
+            compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LC(LS(Z))>;
             display-name = "Redo";
         };
 
         undo: undo {
-            compatible = "zmk-behavior-macro";
+            compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LC(Z)>;
             display-name = "Undo";
