@@ -150,6 +150,16 @@
     combos {
         compatible = "zmk,combos";
 
+        to_base {
+            bindings = <&to 0>;
+            key-positions = <0 1>;
+        };
+
+        to_game {
+            bindings = <&to 1>;
+            key-positions = <1 2>;
+        };
+
         wm_combo {
             bindings = <&alt_tab>;
             key-positions = <15 16>;  // FP
