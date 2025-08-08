@@ -4,6 +4,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/outputs.h>
 
 &lt {
     tapping-term-ms = <180>;
@@ -283,6 +284,24 @@
 
             mods = <(MOD_LALT|MOD_RALT)>;
         };
+
+        semi_tild: semi_tild {
+            compatible = "zmk,behavior-mod-morph";
+            bindings = <&kp SEMI>, <&kp TILDE>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        htst: semi_tild_hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&kp>, <&semi_tild>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+        };
     };
 
     macros {
@@ -444,6 +463,18 @@
                 , <&htcs SEMI 0>
                 ;
         };
+
+        asst: autoshift_semi_tild {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press>
+                , <&htst TILDE 0>
+                , <&macro_pause_for_release>
+                , <&macro_release>
+                , <&htst TILDE 0>
+                ;
+        };
     };
 
     combos {
@@ -452,56 +483,13 @@
         to_base {
             bindings = <&to 0>;
             key-positions = <0 1>;
+            layers = <1 2 3 4>;
         };
 
         to_game {
             bindings = <&to 1>;
             key-positions = <2 1>;
-        };
-
-        lgui {
-            bindings = <&sk LGUI>;
-            key-positions = <38 39>;  //  AR
-        };
-
-        lcas {
-            bindings = <&sk LA(LC(LSHFT))>;
-            key-positions = <38 39 40>; // RS
-        };
-
-        lcs {
-            bindings = <&sk LC(LSHFT)>;
-            key-positions = <40 39>; // RST
-        };
-
-        rcs {
-            bindings = <&sk RC(RSHFT)>;
-            key-positions = <45 46>;  // ST
-        };
-
-        rcas {
-            bindings = <&sk LCTRL>;
-            key-positions = <46 45 47>;  // NE
-        };
-
-        rgui {
-            bindings = <&sk RGUI>;
-            key-positions = <47 46>;  // NEI
-        };
-
-        bt_prv {
-            bindings = <&bt BT_PRV>;
-            key-positions = <6 7>;  // RT2 RT3
-        };
-
-        bt_nxt {
-            bindings = <&bt BT_NXT>;
-            key-positions = <7 8>;  // RT3 RT4
-        };
-
-        bt_clr {
-            bindings = <&bt BT_CLR>;
-            key-positions = <6 7 8>; // RT2 RT3 RT4
+            layers = <0>;
         };
     };
 
@@ -526,10 +514,10 @@
 
             bindings = <
 &alt_f12   &alt_f1              &alt_f2     &alt_f3         &alt_f4       &alt_f5                                          &alt_f6          &alt_f7       &alt_f8         &alt_f9     &alt_f10             &alt_f11
-&as LBKT   &kp Q                &kp W       &lt 3 F         &kp P         &kp B                                            &kp J            &kp L         &lt 3 U         &kp Y       &as SQT              &as RBKT
+&as LBKT   &kp Q                &lt 4 W     &lt 3 F         &kp P         &kp B                                            &kp J            &kp L         &lt 3 U         &kp Y       &as SQT              &as RBKT
 &asll      &hm LC(LA(LSHFT)) A  &hm LALT R  &lt 2 S         &hm LGUI T    &hm LC(LSHFT) G                                  &hm RC(RSHFT) M  &hm RGUI N    &lt 2 E         &hm LALT I  &hm RC(LA(RSHFT)) O  &asrg
 &as GRAVE  &kp Z                &kp X       &kp C           &kp D         &kp V            &swapper         &launcher      &kp K            &kp H         &ascq           &asde       &asfp                &as BSLH
-                                            &mt LGUI GRAVE  &mt LALT ESC  &mt LCTRL SPACE  &mt LSHFT TAB    &mt RSHFT RET  &mt RCTRL BSPC   &mt LALT DEL  &mt RGUI PSCRN
+                                            &mt LGUI GRAVE  &mt LALT ESC  &mt LCTRL SPACE  &mt LSHFT TAB    &mt RSHFT RET  &mt RCTRL BSPC   &mt LALT DEL  &mt RGUI TILDE
             >;
         };
 
@@ -606,6 +594,18 @@
 &trans  &kp F13                &kp F1       &kp F2  &kp F3       &kp F10            &trans    &trans  &sk RSHFT  &sk RCTRL  &sk LALT   &sk RGUI   &sk RC(LA(RSHFT))  &trans
                                             &trans  &trans       &trans             &trans    &trans  &trans     &trans     &trans
             >;
+        };
+
+        sys {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans                         &trans        &trans        &trans        &trans        &trans          &trans
+&trans  &trans  &trans  &trans  &trans  &bootloader                    &trans        &trans        &trans        &trans        &bt BT_CLR_ALL  &trans
+&trans  &trans  &trans  &trans  &trans  &sys_reset                     &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans
+&trans  &trans  &trans  &trans  &trans  &trans       &trans    &trans  &out OUT_TOG  &trans        &trans        &trans        &bt BT_CLR      &trans
+                        &trans  &trans  &trans       &trans    &trans  &trans        &trans        &trans
+            >;
+
+            label = "system";
         };
     };
 };
