@@ -514,13 +514,13 @@
         };
 
         l_fun {
-            bindings = <&sl 3>;
+            bindings = <&sl 4>;
             key-positions = <2 4>;
             layers = <0>;
         };
 
         r_fun {
-            bindings = <&sl 3>;
+            bindings = <&sl 4>;
             key-positions = <7 9>;
             layers = <0>;
         };
